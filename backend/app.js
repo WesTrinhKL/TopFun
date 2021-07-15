@@ -41,6 +41,8 @@ app.use(routes); // Connect all the routes
 
 //@error handlers
 app.use((_req, _res, next) => {// Catch unhandled requests (resource not found 404)
+  //^if 'err' isn't passed then this error handler will be called rather than the ones below
+  //^one of the final calls towards the end
   const err = new Error("The requested resource couldn't be found.");
   err.title = "Resource Not Found";
   err.errors = ["The requested resource couldn't be found."];
