@@ -5,7 +5,7 @@ const cors = require('cors');
 const csurf = require('csurf');
 const helmet = require('helmet');
 const cookieParser = require('cookie-parser');
-//backend/app.js
+const { ValidationError } = require('sequelize'); //sequelize validation error handler
 const routes = require('./routes');
 
 //@set development environment
@@ -37,6 +37,36 @@ app.use(// Set the _csrf token and create req.csrfToken method
 
 //@use routes
 app.use(routes); // Connect all the routes
+
+
+//@error handlers
+app.use((_req, _res, next) => {// Catch unhandled requests (resource not found 404)
+  const err = new Error("The requested resource couldn't be found.");
+  err.title = "Resource Not Found";
+  err.errors = ["The requested resource couldn't be found."];
+  err.status = 404;
+  next(err);
+});
+app.use((err, _req, _res, next) => {// Process sequelize errors
+  // check if error is a Sequelize error:
+  if (err instanceof ValidationError) {
+    err.errors = err.errors.map((e) => e.message);
+    err.title = 'Validation error';
+  }
+  next(err);
+})
+app.use((err, _req, res, _next) => { // Error formatter before response
+  res.status(err.status || 500);
+  console.error(err);
+  res.json({
+    title: err.title || 'Server Error',
+    message: err.message,
+    errors: err.errors,
+    stack: isProduction ? null : err.stack,
+  });
+});
+
+
 
 
 //@export our app to be used bin/www
