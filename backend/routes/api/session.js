@@ -33,6 +33,16 @@ router.post(
   }),
 );
 
+//@logout delete route
+//if user is logged in, clear jwt cookie token
+router.delete( //we don't need async handler because we're not making any async request calls (like to db)
+  '/',
+  (_req, res) => {
+    res.clearCookie('token'); //attach a clearCookie to res obj to let browser know to clear cookie.
+    return res.json({ message: 'success' });
+  }
+);
+
 
 
 
