@@ -26,6 +26,7 @@ const setTokenCookie = (res, user) => {// Sends a JWT Cookie
   });
 
   return token;
+  //note: we didn't assign an error handler here since the logic that calls this is wrapped in an async handler to handle the error there if anything throws an error.
 };
 
 //@Restore user's information (username, role, etc.) from JWT payload

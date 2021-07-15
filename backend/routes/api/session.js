@@ -19,27 +19,19 @@ router.post(
 
     const user = await User.login({ credential, password }); //calls the user static login method defined in User Model.
 
-    if (!user) {
+    if (!user) { //custom error handling if not correct user
       const err = new Error('Login failed');
       err.status = 401;
       err.title = 'Login failed';
       err.errors = ['The provided credentials were invalid.'];
       return next(err);
     }
-
-    await setTokenCookie(res, user);
-
-    return res.json({
+    await setTokenCookie(res, user); //attach cookie to 'res'
+    return res.json({ //send res with cookie attached
       user,
     });
   }),
 );
-
-
-
-
-
-
 
 
 
