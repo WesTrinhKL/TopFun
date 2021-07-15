@@ -10,7 +10,7 @@ const router = express.Router();
 
 
 
-//@login POSTS route
+//@login POSTS route: POST /api/session
 //if user exists (after bycrpt validation), send back jwt token
 router.post(
   '/',
@@ -42,6 +42,22 @@ router.delete( //we don't need async handler because we're not making any async 
     return res.json({ message: 'success' });
   }
 );
+
+//@retrieve user GET /api/session
+// Restore session user
+router.get(
+  '/',
+  restoreUser,
+  (req, res) => {
+    const { user } = req;
+    if (user) {
+      return res.json({
+        user: user.toSafeObject() //we added the 'user object' from db in the login route. The 'user obj' contains a method toSafeObject() which will return a js object with the user's id, email, username. this is for encapsulation(protecting direct access of data) so we don't have to directly do 'user.email' and instead use a getter method (toSafeObject) to essentially get the data.
+      });
+    } else return res.json({});
+  }
+);
+
 
 
 
