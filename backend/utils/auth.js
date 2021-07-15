@@ -7,7 +7,7 @@ const { secret, expiresIn } = jwtConfig;//set up JWT to handle authorization tok
 
 
 //@authorization token send: if user verified successfully (login/singup success)
-//once login/signup route is successful, we'll call these authorization middlewares to give token.
+//once login/signup route is successful, we'll call this authorization middleware to give token.
 const setTokenCookie = (res, user) => {// Sends a JWT Cookie
   // Create the token.
   const token = jwt.sign(
@@ -17,7 +17,7 @@ const setTokenCookie = (res, user) => {// Sends a JWT Cookie
   );
 
   const isProduction = process.env.NODE_ENV === "production";
-  // Set the token cookie
+  // once user is found in db, attach token to res to be sent back.
   res.cookie('token', token, {
     maxAge: expiresIn * 1000, // maxAge in milliseconds
     httpOnly: true,
