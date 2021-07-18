@@ -29,6 +29,14 @@ if (process.env.NODE_ENV === 'production') {
   });
 }
 
+// Add a XSRF-TOKEN cookie to allow making requests only in development
+if (process.env.NODE_ENV !== 'production') {
+  router.get('/api/csrf/restore', (req, res) => {
+    res.cookie('XSRF-TOKEN', req.csrfToken());
+    return res.json({});
+  });
+}
+
 
 //@/testing routes
 const testingRouter = require('./testing');

@@ -6,10 +6,14 @@ import App from './App';
 import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import configureStore from './store';
+import { restoreCSRF, csrfFetch } from './store/csrf';
 
 const store = configureStore();
 
-if (process.env.NODE_ENV !== 'production') {
+
+if (process.env.NODE_ENV !== 'production') { //in dev
+  restoreCSRF(); //want to be able to get the csrf token from backend
+  window.csrfFetch = csrfFetch;
   window.store = store;
 }
 
