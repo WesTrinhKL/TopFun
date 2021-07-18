@@ -12,7 +12,7 @@ const store = configureStore();
 
 
 if (process.env.NODE_ENV !== 'production') { //in dev
-  restoreCSRF(); //want to be able to get the csrf token from backend
+  restoreCSRF(); //fetch the csrf token from backend
   window.csrfFetch = csrfFetch;
   window.store = store;
 }
