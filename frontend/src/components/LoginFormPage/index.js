@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import { loginUser, removeSession } from "../../store/session";
+import { loginUser } from "../../store/session";
 import {useDispatch, useSelector} from 'react-redux';
 import {Redirect} from 'react-router-dom';
 
@@ -19,14 +19,17 @@ export const LoginFormPage = () => {
     try {
       e.preventDefault();
       setErrors([]);
-      const response = await dispatch(loginUser({
+      const response = await dispatch(loginUser({ //attempt user login with credentials
         credential,
         password
       }));
       const userLoginResponse = await response.json();
-      if(userLoginResponse && userLoginResponse.errors) setErrors(userLoginResponse.errors);
+      console.log("login successful with response: ", userLoginResponse)
+      return userLoginResponse;
     } catch (error) {
-      console.log(error);
+      const errors = await error.json();
+      console.log("got an error", errors);
+      setErrors(errors.errors);
     }
   }
 
