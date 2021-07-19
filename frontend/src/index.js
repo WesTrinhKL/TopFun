@@ -18,7 +18,7 @@ if (process.env.NODE_ENV !== 'production') { //in dev
   restoreCSRF(); //fetch the csrf token from backend
   window.csrfFetch = csrfFetch;
   window.store = store;
-  window.sessionActions = sessionActions; //attach actions to window
+  window.sessionActions = sessionActions; //attach session actions to window
 }
 
 //wrap our app with the store and router providers
