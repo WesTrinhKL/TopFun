@@ -10,10 +10,13 @@ function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
   useEffect(() => {
-    dispatch(sessionActions.restoreUser()).then(() => setIsLoaded(true));
+    console.log("state before attempting to restore user: ", isLoaded);
+    dispatch(sessionActions.restoreUser()).then(() => setIsLoaded(true)); //only after attempting to restore user is the isLoaded set to true  (after attempting to render).
   }, [dispatch]);
 
   return isLoaded && (
+    <div>
+    <div>hello, this is the value of isLoaded: {`${isLoaded}`}</div>
     <Switch>
       <Route path='/login'>
         <LoginFormPage/>
@@ -22,6 +25,7 @@ function App() {
         <SignupFormPage />
       </Route>
     </Switch>
+    </div>
   );
 }
 
