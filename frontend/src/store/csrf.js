@@ -28,7 +28,7 @@ export async function csrfFetch(url, options = {}) { //allow fetching with CSRF
 }
 
 
-//@ ONLY IN DEV: call this to get the "XSRF-TOKEN" cookie, should only be used in development
+//@ ONLY IN DEV: regular 'get' backend request to get "XSRF-TOKEN" cookie, should only be used in development
 export function restoreCSRF() {
   return csrfFetch('/api/csrf/restore');
 }

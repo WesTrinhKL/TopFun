@@ -11,7 +11,7 @@ router.get('/hello/world', function(req, res) {
 });
 
 
-//@/api routes
+//@/api routes from api/index.js
 const apiRouter = require('./api');
 router.use('/api', apiRouter);
 
@@ -19,15 +19,16 @@ router.use('/api', apiRouter);
 //@static route, serving build files in production
 if (process.env.NODE_ENV === 'production') {
   const path = require('path');
-  // Serve the frontend's index.html file build at the root route
+  // Serve the frontend's index.html file build at the / route
   router.get('/', (req, res) => {
     res.cookie('XSRF-TOKEN', req.csrfToken());
     return res.sendFile(
       path.resolve(__dirname, '../../frontend', 'build', 'index.html')
     );
   });
-  // Serve the static assets in the frontend's build folder
-  router.use(express.static(path.resolve("../frontend/build")));
+
+  router.use(express.static(path.resolve("../frontend/build"))); // using express.static middleware to Serve the static assets in the frontend's build folder
+
   // Serve the frontend's index.html file at all other routes NOT starting with /api
   router.get(/^(?!\/?api).*/, (req, res) => {
     res.cookie('XSRF-TOKEN', req.csrfToken());

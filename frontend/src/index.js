@@ -8,13 +8,17 @@ import { Provider } from 'react-redux';
 import configureStore from './store';
 import { restoreCSRF, csrfFetch } from './store/csrf';
 
+// thunk and redux
+import * as sessionActions from './store/session';
+
 const store = configureStore();
 
-
+//when app is first loaded in, restore the CSRF token
 if (process.env.NODE_ENV !== 'production') { //in dev
   restoreCSRF(); //fetch the csrf token from backend
   window.csrfFetch = csrfFetch;
   window.store = store;
+  window.sessionActions = sessionActions; //attach actions to window
 }
 
 //wrap our app with the store and router providers
