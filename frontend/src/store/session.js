@@ -33,6 +33,14 @@ export const loginUser = (userCredentials) => async (dispatch) =>{
   return response;
 }
 
+//restore user to persist session in store
+export const restoreUser = () => async dispatch => {
+  const response = await csrfFetch('/api/session');
+  const data = await response.json();
+  dispatch(loginSession(data.user));
+  return response;
+};
+
 
 /* ----- REDUCERS ------ */
 const initialState = {user:null};

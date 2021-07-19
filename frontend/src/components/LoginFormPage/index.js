@@ -15,22 +15,16 @@ export const LoginFormPage = () => {
     <Redirect to='/'/>
   )
 
+
   const handleSubmit = async (e) =>{
-    try {
-      e.preventDefault();
-      setErrors([]);
-      const response = await dispatch(loginUser({ //attempt user login with credentials
-        credential,
-        password
-      }));
-      const userLoginResponse = await response.json();
-      console.log("login successful with response: ", userLoginResponse)
-      return userLoginResponse;
-    } catch (error) {
-      const errors = await error.json();
-      console.log("got an error", errors);
-      setErrors(errors.errors);
-    }
+    e.preventDefault();
+    setErrors([]);
+    return dispatch(loginUser({ credential, password }))
+      .catch(async (res) => {
+        const data = await res.json();
+        // console.log("error res", data);
+        if (data && data.errors) setErrors(data.errors);
+      });
   }
 
   return (
