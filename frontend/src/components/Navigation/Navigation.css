@@ -1,22 +1,48 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,500,300,700);
+
 * {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: Roboto;
 }
+/* body{
+  background-color: #DAE0E6;
+  background-image: url('../../images/landingbg.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+} */
+
 
 /* --------NAV BAR-------- */
 .active{
   font-weight: bold;
 }
 
+.background-nav-container{
+  background-color: #DAE0E6;
+  background-image: url('../../images/landingbg.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+}
+
 .nav-wrapper{
   width: 100%;
+  background-color: black;
+  background: transparent;
+
 }
 
 .nav-container{
-  width: 90%;
+  width: 94%;
   margin: auto;
   display: flex;
   align-items: center;
-  height: 60px;
+  height: 50px;
+
+
+
 }
 
 .nav-container__signup, .nav-container__login {
@@ -35,10 +61,11 @@
 }
 
 .nav-container__home{
-  font-family: "Proxima Nova", "helvetica neue", helvetica, arial, sans-serif;
+
   display: flex;
   align-items: center;
   text-decoration: none;
+  color: white;
 
 }
 
@@ -48,7 +75,7 @@
 }
 
 .nav-container__home span{
-  font-family: "Proxima Nova", "helvetica neue", helvetica, arial, sans-serif;
+  font-family: Roboto, "Proxima Nova", "helvetica neue", helvetica, arial, sans-serif;
   font-size: 25px;
   font-weight: bold;
   /* color: white; */

@@ -23,17 +23,19 @@ function Navigation({ isLoaded }){
   }
 
   return (
-    <div className="nav-wrapper">
-      <nav className="nav-container">
-        <NavLink className="nav-container__home" exact to="/">
-          <img className="logo" src={purbluelogoimg} alt="sd" />
-          <span>TopFun</span>
+    <div className="background-nav-container">
+      <div className="nav-wrapper">
+        <nav className="nav-container">
+          <NavLink className="nav-container__home" exact to="/">
+            <img className="logo" src={purbluelogoimg} alt="sd" />
+            <span>topfun</span>
 
-        </NavLink>
-        <div className="nav-container__tabs">
-          {isLoaded && sessionLinks}
-        </div>
-      </nav>
+          </NavLink>
+          <div className="nav-container__tabs">
+            {isLoaded && sessionLinks}
+          </div>
+        </nav>
+      </div>
     </div>
 
   );
