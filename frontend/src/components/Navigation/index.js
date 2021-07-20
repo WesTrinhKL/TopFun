@@ -3,6 +3,7 @@ import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
 import './Navigation.css';
+import purbluelogoimg from '../../images/purbluelogo2.png'
 
 function Navigation({ isLoaded }){
   const sessionUser = useSelector(state => state.session.user);
@@ -25,8 +26,9 @@ function Navigation({ isLoaded }){
     <div className="nav-wrapper">
       <nav className="nav-container">
         <NavLink className="nav-container__home" exact to="/">
+          <img className="logo" src={purbluelogoimg} alt="sd" />
           <span>TopFun</span>
-          <img src="../images/purbluelogo.svg" alt="" />
+
         </NavLink>
         <div className="nav-container__tabs">
           {isLoaded && sessionLinks}
