@@ -4,6 +4,7 @@ import {useDispatch, useSelector} from 'react-redux';
 import {Redirect} from 'react-router-dom';
 import { useNavbar } from '../../context/NavbarContext';
 import landingbg from '../../images/landingbg.jpg'
+import { Link } from 'react-router-dom';
 
 import './LoginForm.css';
 
@@ -39,38 +40,54 @@ export const LoginFormPage = () => {
     <div>
       <img className="landing-img" src={landingbg} alt="" />
     </div>
-    <div >
+    <div className="form-container">
 
       <form className="form-background" onSubmit={handleSubmit}>
-        <ul>
+
+        <h1>Sign In</h1>
+
+        <ul className="error-group">
           {errors.map((error, idx) => (
             <li key={idx}>{error}</li>
           ))}
         </ul>
 
+
+
         {/* username */}
-        <label>
-          Username or Email
+        <div className="username-container">
+          <div className="placeholder">Username or Email</div>
           <input
-            type="text"
-            value={credential}
-            onChange={(e) => setCredential(e.target.value)}
-            required
-          />
-        </label>
+              type="text"
+              value={credential}
+              onChange={(e) => setCredential(e.target.value)}
+              required
+            />
+        </div>
+
 
         {/* password */}
-        <label>
-          Password
+        <div className="password-container">
+          <div className="placeholder">Password</div>
           <input
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
           />
-        </label>
-        <button type="submit">Log In</button>
+        </div>
+
+        <button className="signin-button" type="submit">
+          Log In
+        </button>
+        <hr />
+        <button className="redirect-signup">
+          <span>Not a member yet? </span>
+          <Link to='/signup'>Sign up here!</Link>
+        </button>
       </form>
+
+
     </div>
     </>
   )
