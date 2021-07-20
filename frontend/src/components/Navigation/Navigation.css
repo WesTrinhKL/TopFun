@@ -6,32 +6,40 @@
   padding: 0;
   font-family: Roboto;
 }
-/* body{
-  background-color: #DAE0E6;
-  background-image: url('../../images/landingbg.jpg');
-  background-repeat: no-repeat;
-  background-size: cover;
-} */
-
 
 /* --------NAV BAR-------- */
 .active{
   font-weight: bold;
 }
 
-.background-nav-container{
+/* .background-nav-container{
   background-color: #DAE0E6;
   background-image: url('../../images/landingbg.jpg');
   background-repeat: no-repeat;
   background-size: cover;
   height: 100vh;
-}
+} */
 
 .nav-wrapper{
   width: 100%;
-  background-color: black;
+  /* background-color: black; */
+  box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.3);
   background: transparent;
+  z-index: 10;
+  display:flex;
+  position: sticky;
+  top: 0;
+}
 
+/* change styles of the navbar depending on path */
+.nav-wrapper-not-landing{
+  width: 100%;
+  /* background-color: black; */
+  background: linear-gradient(90deg, rgb(26, 24, 24) 0%, rgb(26, 23, 23) 100%);
+  z-index: 10;
+  display:flex;
+  position: sticky;
+  top: 0;
 }
 
 .nav-container{
@@ -47,9 +55,23 @@
 
 .nav-container__signup, .nav-container__login {
   color: rgb(22, 41, 83);
-  padding-right: 20px;
+
   font-size: 18px;
   text-decoration: none;
+}
+
+.nav-container__login{
+  color: white;
+  padding-right: 20px;
+}
+
+.nav-container__signup{
+  /* border: 1px solid black; */
+  background-color: white;
+  padding: 6px;
+  border-radius: 3%;
+  font-size: small;
+  font-weight: bold;
 }
 
 .nav-container__tabs{

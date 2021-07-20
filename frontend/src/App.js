@@ -5,6 +5,9 @@ import { LoginFormPage } from "./components/LoginFormPage";
 import SignupFormPage from "./components/SignUpFormPage";
 import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
+import { LandingPage } from "./components/LandingPage";
+import './index.css'
+import { useNavbar } from "./context/NavbarContext";
 
 function App() {
 
@@ -16,20 +19,27 @@ function App() {
   }, [dispatch]);
 
   return isLoaded && (
-    <div>
-    <Navigation isLoaded={isLoaded} />
+    // <div className="app-container">
+    //   <div className="app-navbar--sticky">
 
-    {isLoaded && (
-        <Switch>
-          <Route path="/login">
-            <LoginFormPage />
-          </Route>
-          <Route path="/signup">
-            <SignupFormPage />
-          </Route>
-        </Switch>
-      )}
-    </div>
+    //   </div>
+    <>
+      <Navigation isLoaded={isLoaded} />
+      {isLoaded && (
+          <Switch>
+            <Route exact path='/'>
+              <LandingPage />
+            </Route>
+            <Route path="/login">
+              <LoginFormPage />
+            </Route>
+            <Route path="/signup">
+              <SignupFormPage />
+            </Route>
+          </Switch>
+        )}
+    </>
+
   );
 }
 

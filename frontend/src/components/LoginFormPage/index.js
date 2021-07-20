@@ -2,10 +2,14 @@ import React, {useState} from 'react';
 import { loginUser } from "../../store/session";
 import {useDispatch, useSelector} from 'react-redux';
 import {Redirect} from 'react-router-dom';
+import { useNavbar } from '../../context/NavbarContext';
 
 import './LoginForm.css';
 
 export const LoginFormPage = () => {
+  const {setNavLandingStyle} = useNavbar();
+  setNavLandingStyle("nav-wrapper-not-landing");
+
   const dispatch = useDispatch();
   const sessionUser = useSelector(state => state.session.user); //get redux store's user data
   const [credential, setCredential] = useState(''); //username/email

@@ -1,12 +1,18 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
 import './Navigation.css';
 import purbluelogoimg from '../../images/purbluelogo2.png'
+// import { useState } from 'react';
+import { useNavbar } from '../../context/NavbarContext';
 
 function Navigation({ isLoaded }){
   const sessionUser = useSelector(state => state.session.user);
+  // const [navLandingStyle, setNavLandingStyle] = useState("nav-wrapper-not-landing")
+  const {navbarStyle} = useNavbar();
+
+
 
   let sessionLinks;
   if (sessionUser) { //determine what to render if user is logged in
@@ -20,12 +26,24 @@ function Navigation({ isLoaded }){
         <NavLink className="nav-container__signup" exact to="/signup">Sign Up</NavLink>
       </>
     );
+
   }
 
+
+  // useEffect(()=>{
+  //   setNavLandingStyle(window.location.pathname === '/'? "nav-wrapper": "nav-wrapper-not-landing");
+  //   console.log("nav use effect");
+  // }, [navLandingStyle])
+
+  console.log("this is the pathname", window.location.pathname);
+
+
+
   return (
-    <div className="background-nav-container">
-      <div className="nav-wrapper">
-        <nav className="nav-container">
+    // <div className="background-nav-container">
+    <>
+      <nav className={navbarStyle}>
+        <div className="nav-container">
           <NavLink className="nav-container__home" exact to="/">
             <img className="logo" src={purbluelogoimg} alt="sd" />
             <span>topfun</span>
@@ -34,9 +52,9 @@ function Navigation({ isLoaded }){
           <div className="nav-container__tabs">
             {isLoaded && sessionLinks}
           </div>
-        </nav>
-      </div>
-    </div>
+        </div>
+      </nav>
+    </>
 
   );
 }

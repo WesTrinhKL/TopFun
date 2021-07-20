@@ -10,6 +10,7 @@ import { restoreCSRF, csrfFetch } from './store/csrf';
 
 // thunk and redux
 import * as sessionActions from './store/session';
+import NavbarProvider from './context/NavbarContext';
 
 const store = configureStore();
 
@@ -25,9 +26,12 @@ if (process.env.NODE_ENV !== 'production') { //in dev
 function Root() {
   return (
     <Provider store={store}>
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
+      <NavbarProvider>
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
+      </NavbarProvider>
+
     </Provider>
   );
 }
