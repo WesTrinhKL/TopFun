@@ -63,15 +63,22 @@
 .nav-container__login{
   color: white;
   padding-right: 20px;
+  font-size: small;
+}
+.nav-container__login:hover {
+  color: rgb(196, 196, 196);
 }
 
 .nav-container__signup{
   /* border: 1px solid black; */
   background-color: white;
   padding: 6px;
-  border-radius: 3%;
+  border-radius: 3px;
   font-size: small;
   font-weight: bold;
+}
+.nav-container__signup:hover {
+  color: rgb(168, 163, 163);
 }
 
 .nav-container__tabs{

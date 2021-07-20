@@ -3,12 +3,15 @@ import { loginUser } from "../../store/session";
 import {useDispatch, useSelector} from 'react-redux';
 import {Redirect} from 'react-router-dom';
 import { useNavbar } from '../../context/NavbarContext';
+import landingbg from '../../images/landingbg.jpg'
 
 import './LoginForm.css';
 
 export const LoginFormPage = () => {
+
   const {setNavLandingStyle} = useNavbar();
   setNavLandingStyle("nav-wrapper-not-landing");
+
 
   const dispatch = useDispatch();
   const sessionUser = useSelector(state => state.session.user); //get redux store's user data
@@ -32,8 +35,13 @@ export const LoginFormPage = () => {
   }
 
   return (
-    <div className="form-background">
-      <form  onSubmit={handleSubmit}>
+    <>
+    <div>
+      <img className="landing-img" src={landingbg} alt="" />
+    </div>
+    <div >
+
+      <form className="form-background" onSubmit={handleSubmit}>
         <ul>
           {errors.map((error, idx) => (
             <li key={idx}>{error}</li>
@@ -64,5 +72,6 @@ export const LoginFormPage = () => {
         <button type="submit">Log In</button>
       </form>
     </div>
+    </>
   )
 }

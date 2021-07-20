@@ -4,15 +4,12 @@ import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
 import './Navigation.css';
 import purbluelogoimg from '../../images/purbluelogo2.png'
-// import { useState } from 'react';
 import { useNavbar } from '../../context/NavbarContext';
 
 function Navigation({ isLoaded }){
+
   const sessionUser = useSelector(state => state.session.user);
-  // const [navLandingStyle, setNavLandingStyle] = useState("nav-wrapper-not-landing")
-  const {navbarStyle} = useNavbar();
-
-
+  const {navbarStyle} = useNavbar(); //set navigation style based on global nav context
 
   let sessionLinks;
   if (sessionUser) { //determine what to render if user is logged in
