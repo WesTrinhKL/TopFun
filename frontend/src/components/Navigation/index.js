@@ -8,26 +8,32 @@ function Navigation({ isLoaded }){
   const sessionUser = useSelector(state => state.session.user);
 
   let sessionLinks;
-  if (sessionUser) {
+  if (sessionUser) { //determine what to render if user is logged in
     sessionLinks = (
       <ProfileButton user={sessionUser} />
     );
   } else {
     sessionLinks = (
       <>
-        <NavLink to="/login">Log In</NavLink>
-        <NavLink to="/signup">Sign Up</NavLink>
+        <NavLink className="nav-container__login" exact to="/login">Log In</NavLink>
+        <NavLink className="nav-container__signup" exact to="/signup">Sign Up</NavLink>
       </>
     );
   }
 
   return (
-    <ul>
-      <li>
-        <NavLink exact to="/">Home</NavLink>
-        {isLoaded && sessionLinks}
-      </li>
-    </ul>
+    <div className="nav-wrapper">
+      <nav className="nav-container">
+        <NavLink className="nav-container__home" exact to="/">
+          <span>TopFun</span>
+          <img src="../images/purbluelogo.svg" alt="" />
+        </NavLink>
+        <div className="nav-container__tabs">
+          {isLoaded && sessionLinks}
+        </div>
+      </nav>
+    </div>
+
   );
 }
 

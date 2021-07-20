@@ -1,0 +1,8 @@
+ul, li{
+  list-style-type: none;
+}
+
+.openMenuStyle{
+  border: none;
+  background-color: white;
+}
