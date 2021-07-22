@@ -11,8 +11,8 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.INTEGER,
       allowNull: false,
     },
-    category: {
-      type: DataTypes.STRING(255),
+    categoryId: {
+      type: DataTypes.INTEGER,
       allowNull: false,
     },
   }, {});
@@ -22,8 +22,12 @@ module.exports = (sequelize, DataTypes) => {
       foreignKey: 'userId',
     })
     List.hasMany(models.ListItem, {
-      as: 'listItem',
+      as: 'listItems',
       foreignKey: 'listId',
+    })
+    List.belongsTo(models.Category,{
+      as: 'category',
+      foreignKey: 'categoryId',
     })
   };
   return List;

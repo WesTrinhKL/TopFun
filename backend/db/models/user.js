@@ -88,6 +88,9 @@ module.exports = (sequelize, DataTypes) => {
     // associations can be defined here
     User.hasMany(models.List, {
       foreignKey: 'userId',
+    }),
+    User.hasMany(models.Category, {
+      foreignKey: 'userId',
     })
 
   };
