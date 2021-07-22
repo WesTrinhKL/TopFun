@@ -16,7 +16,7 @@ module.exports = (sequelize, DataTypes) => {
       as: 'lists',
       foreignKey: 'categoryId',
     })
-    List.belongsTo(models.User,{
+    Category.belongsTo(models.User,{
       as: 'user',
       foreignKey: 'userId',
     })

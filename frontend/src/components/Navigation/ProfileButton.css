@@ -2,7 +2,79 @@ ul, li{
   list-style-type: none;
 }
 
+.openMenu-wrapper{
+  /* display: flex;
+  flex-direction: column; */
+}
+
 .openMenuStyle{
   border: none;
+  background-color: transparent;
+  position:relative;
+  font-size: 26px;
+  color: white;
+}
+
+.profile-dropdown{
   background-color: white;
+  position:absolute;
+  right: 50px;
+  top: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items:center;
+  min-width: 140px;
+  border-radius: 4px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+
+
+.logout-button{
+  border-style: none;
+  background-color: transparent;
+  padding-top: 5px;
+  padding-bottom: 10px;
+  font-size: 15px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+}
+
+.logout-icon{
+  position: absolute;
+  left: 25px;
+  margin-top: 2px;
+}
+
+.profile-username-button{
+  font-size: 15px;
+  padding-top: 10px;
+  padding-bottom: 5px;
+  cursor: pointer;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+
+}
+
+.profile-dropdown li, .profile-dropdown li button{
+  width: 100%;
+}
+
+.profile-username-button:hover,
+.logout-button:hover  {
+  background-color: rgb(230, 230, 230);
+  border-radius: 4px;
+}
+
+.profile-icon-container{
+  display: flex;
+  justify-content: center;
+}
+
+.profile-icon{
+  margin-right: 3px;
+  font-size: 12px;
+  margin-top: 3px;
+
 }
