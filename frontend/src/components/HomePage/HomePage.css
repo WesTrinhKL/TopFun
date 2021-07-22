@@ -11,7 +11,7 @@ body{
   "lists people"
   "lists explore"
   "lists footer";
-  grid-template-columns: 3fr 1fr;
+  grid-template-columns: 4fr 1fr;
   grid-template-rows: auto;
   gap: 15px;
 
