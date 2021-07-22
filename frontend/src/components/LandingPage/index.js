@@ -3,10 +3,19 @@ import './LandingPage.css'
 import landingbg from '../../images/landingbg2.jpg'
 import { useNavbar } from '../../context/NavbarContext'
 import { Link} from 'react-router-dom';
+import {useSelector} from 'react-redux';
+import {Redirect} from 'react-router-dom';
 
 export const LandingPage = () => {
   const {setNavLandingStyle} = useNavbar();
   setNavLandingStyle("nav-wrapper");
+
+  const sessionUser = useSelector(state => state.session.user);
+
+  // if(sessionUser) return (
+  //   <Redirect to='/yes'/>
+  // )
+
   return (
     <>
     <div className="landing-page-container">

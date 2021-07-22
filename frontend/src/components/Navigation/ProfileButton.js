@@ -39,7 +39,7 @@ function ProfileButton({ user }) {
           <li >
 
             <div className="profile-username-button">
-              <i class="fas fa-user profile-icon"></i>
+              <i className="fas fa-user profile-icon"></i>
               <div> {user.username} </div>
             </div>
           </li>
@@ -48,7 +48,7 @@ function ProfileButton({ user }) {
             <div className="logout-container">
 
               <button className="logout-button" onClick={logout}>
-                <i class="fas fa-sign-out-alt logout-icon"></i>
+                <i className="fas fa-sign-out-alt logout-icon"></i>
                 <div>Log Out</div>
               </button>
             </div>

@@ -2,11 +2,6 @@ ul, li{
   list-style-type: none;
 }
 
-.openMenu-wrapper{
-  /* display: flex;
-  flex-direction: column; */
-}
-
 .openMenuStyle{
   border: none;
   background-color: transparent;
