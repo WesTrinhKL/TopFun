@@ -69,7 +69,7 @@ const requireAuth = [ //the array will execute the items (middleware logic) in o
     err.title = 'Unauthorized';
     err.errors = ['Unauthorized'];
     err.status = 401;
-    return next(err); //raise an error immediately
+    return next(err); //raise an error immediately - remember that passing in err will trigger error as next
   },
 ];
 module.exports = { setTokenCookie, restoreUser, requireAuth };
