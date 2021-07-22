@@ -12,9 +12,9 @@ export const LandingPage = () => {
 
   const sessionUser = useSelector(state => state.session.user);
 
-  // if(sessionUser) return (
-  //   <Redirect to='/yes'/>
-  // )
+  if(sessionUser) return (
+    <Redirect to='/HomePage'/>
+  )
 
   return (
     <>

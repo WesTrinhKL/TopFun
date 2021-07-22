@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useDispatch } from 'react-redux';
 import * as sessionActions from '../../store/session';
 import './ProfileButton.css'
+import { useHistory } from "react-router";
 
 function ProfileButton({ user }) {
   const dispatch = useDispatch();
@@ -24,9 +25,13 @@ function ProfileButton({ user }) {
     return () => document.removeEventListener("click", closeMenu); //clean up
   }, [showMenu]);
 
-  const logout = (e) => {
+  const history = useHistory();
+
+  const logout = async (e) => {
     e.preventDefault();
-    dispatch(sessionActions.logout());
+    await dispatch(sessionActions.logout());
+    history.push("/");
+    return;
   };
 
   return (

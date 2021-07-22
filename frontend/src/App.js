@@ -6,6 +6,7 @@ import SignupFormPage from "./components/SignUpFormPage";
 import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
 import { LandingPage } from "./components/LandingPage";
+import { HomePage} from "./components/HomePage";
 import './index.css'
 import { useNavbar } from "./context/NavbarContext";
 
@@ -29,6 +30,9 @@ function App() {
           <Switch>
             <Route exact path='/'>
               <LandingPage />
+            </Route>
+            <Route exact path='/homepage'>
+              <HomePage />
             </Route>
             <Route path="/login">
               <LoginFormPage />

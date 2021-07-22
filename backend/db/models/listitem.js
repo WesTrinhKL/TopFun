@@ -9,8 +9,12 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
   ListItem.associate = function(models) {
     ListItem.belongsTo(models.List, {
-      as: 'list',
+      as: 'lists',
       foreignKey: 'listId',
+    })
+    ListItem.belongsTo(models.User, {
+      as: 'user',
+      foreignKey: 'userId',
     })
   };
   return ListItem;

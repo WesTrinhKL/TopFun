@@ -1,0 +1,57 @@
+
+body{
+  background-color:  rgb(243, 245, 246);
+}
+
+.homepage-content-container{
+  width: 70%;
+  margin: 25px auto;
+  display: grid;
+  grid-template-areas:
+  "lists people"
+  "lists explore"
+  "lists footer";
+  grid-template-columns: 3fr 1fr;
+  grid-template-rows: auto;
+  gap: 15px;
+
+}
+/* -----------list feed------------ */
+.grid-item-lists{
+  grid-area: lists;
+  /* background-color: rgb(255, 255, 255);
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2); */
+  height: 95vh;
+
+}
+
+.all-lists-container{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 80%;
+}
+
+
+
+/* ----------------------- */
+
+
+.grid-item-people{
+  grid-area: people;
+  background-color: rgb(255, 255, 255);
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+  height: 30vh;
+}
+.grid-item-explore{
+  grid-area: explore;
+  background-color: rgb(255, 255, 255);
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+  height: 30vh;
+}
+.grid-item-footer{
+  grid-area: footer;
+  background-color: rgb(255, 255, 255);
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+  height: 30vh;
+}
