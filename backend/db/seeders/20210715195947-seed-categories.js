@@ -29,13 +29,15 @@ module.exports = {
       ], {});
   },
 
-  down: (queryInterface, Sequelize) => {
+  down: async (queryInterface, Sequelize) => {
     /*
       Add reverting commands here.
       Return a promise to correctly handle asynchronicity.
 
       Example:
       */
-   return queryInterface.bulkDelete('Categories', null, {});
+      // await queryInterface.bulkDelete( "ListItems", null, {});
+      // await queryInterface.bulkDelete( "Lists", null, {});
+      return queryInterface.bulkDelete('Categories', null, {});
   }
 };

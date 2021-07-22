@@ -17,6 +17,7 @@ module.exports = (sequelize, DataTypes) => {
       foreignKey: 'categoryId',
     })
     List.belongsTo(models.User,{
+      as: 'user',
       foreignKey: 'userId',
     })
 
