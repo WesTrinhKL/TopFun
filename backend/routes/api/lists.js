@@ -115,14 +115,12 @@ router.post('/create', requireAuth, validateCreateList, asyncHandler(async (req,
 }) )
 
 //@delete a category
-router.delete('/category/delete/:id', requireAuth, asyncHandler(async (req,res)=>{
-  const id = req.params.id;
+router.post('/category/delete/:id', requireAuth, asyncHandler(async (req,res)=>{
+  const id = parseInt(req.params.id);
   const categoryFound = await Category.findByPk(id);
   if(!categoryFound) throw new Error("cannot find category");
-  await Category.destroy({
-    where:{id:id}
-  });
-  return res.json(categoryFound.id);
+  await categoryFound.destroy();
+  return res.json('deleted category: ', categoryFound.id);
 }))
 
 

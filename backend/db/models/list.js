@@ -25,10 +25,13 @@ module.exports = (sequelize, DataTypes) => {
     List.hasMany(models.ListItem, {
       as: 'listItems',
       foreignKey: 'listId',
+      onDelete: 'cascade',
     })
     List.belongsTo(models.Category,{
       as: 'category',
       foreignKey: 'categoryId',
+      onDelete: 'cascade',
+
     })
   };
   return List;

@@ -11,6 +11,8 @@ module.exports = (sequelize, DataTypes) => {
     ListItem.belongsTo(models.List, {
       as: 'lists',
       foreignKey: 'listId',
+      onDelete: 'cascade',
+
     })
     ListItem.belongsTo(models.User, {
       as: 'user',

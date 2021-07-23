@@ -15,11 +15,12 @@ module.exports = (sequelize, DataTypes) => {
     Category.hasMany(models.List,{
       as: 'lists',
       foreignKey: 'categoryId',
-      onDelete: 'CASCADE',
+      onDelete: 'cascade',
     })
     Category.belongsTo(models.User,{
       as: 'user',
       foreignKey: 'userId',
+
     })
 
   };
