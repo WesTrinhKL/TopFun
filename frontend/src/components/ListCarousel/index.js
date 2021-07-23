@@ -1,5 +1,5 @@
 import  React , {useRef, useState} from 'react'
-
+import { Link } from 'react-router-dom';
 
 import './ListCarousel.css';
 
@@ -18,7 +18,7 @@ export const ListCarousel = (props) => {
 
         ))}
       </div>
-      <a className="list-view-button" href="">view full list</a>
+      <Link to={`/view-list/${props.id}`} className="list-view-button" href="">view full list</Link>
     </div>
 
 

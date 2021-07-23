@@ -29,7 +29,7 @@ export const HomePage = () => {
         </div>
         <div className="all-lists-container">
           {homepageData?.map(list=>(
-            <ListCarousel key={list.id} title={list.title} userObj={list.user} listItemsArray={list.listItems} coverPhotoLink={list.coverPhotoLink} listDescription={list.description} />
+            <ListCarousel key={list.id} id={list.id} title={list.title} userObj={list.user} listItemsArray={list.listItems} coverPhotoLink={list.coverPhotoLink} listDescription={list.description} />
           ))}
         </div>
       </div>

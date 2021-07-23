@@ -52,8 +52,28 @@ const validateListItem = [ //will run each middleware below (your req will be sc
   handleValidationErrors,
 ];
 
-//@get global data feed list.
+
+//@fetch one single list and its items based on list id
 const router = express.Router();
+router.get('/global-feed-lists', asyncHandler(async (req, res)=>{
+  const lists = await List.findAll({
+    include: [
+      {
+        model: User,
+        as: 'user',
+      },
+      {
+        model: ListItem,
+        as: 'listItems',
+      },
+    ],
+    limit: 10,
+  });
+  return res.json(lists);
+  // returns an array of users obj, with arrays(lists key) of lists obj.
+}))
+
+//@get global data feed list.
 router.get('/global-feed-lists', asyncHandler(async (req, res)=>{
   const lists = await List.findAll({
     include: [
@@ -131,7 +151,7 @@ router.post('/create', requireAuth, validateCreateList, asyncHandler(async (req,
   })
   return res.json(createNewList);
 }) )
-
+//@-----------List Items-----------
 //@create item in list
 //send post with 'list id' param and list item
 //verify that the 'list id' sent belongs to user
@@ -176,6 +196,9 @@ router.post('/listId/:id/item', requireAuth, validateListItem, asyncHandler(asyn
     throw err;
   }
 }))
+
+
+
 
 router.post('/listId/:id/update/item/:itemId', requireAuth, validateListItem, asyncHandler(async(req,res)=>{
   //very list id is accessible by user

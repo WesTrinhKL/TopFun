@@ -1,0 +1,22 @@
+.view-list-wrapper{
+  width: 60%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(255, 255, 255);
+  min-height: 100%;
+  margin-top: 25px;
+}
+
+.view-container-list{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 80vh;
+}
+
+.title-list{
+  font-weight: Bold;
+  font-size: 30px;
+  margin: 20px 0;
+}

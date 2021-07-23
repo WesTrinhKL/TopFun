@@ -10,6 +10,7 @@ import { HomePage} from "./components/HomePage";
 import './index.css'
 import { useNavbar } from "./context/NavbarContext";
 import { CreateListForm } from "./components/CreateListForm";
+import { ViewListPage } from "./components/ViewListPage";
 
 function App() {
 
@@ -43,6 +44,9 @@ function App() {
             </Route>
             <Route path="/create-list">
               <CreateListForm />
+            </Route>
+            <Route path="/view-list/:id">
+              <ViewListPage />
             </Route>
             <Route path="/">
             <h2>$04: Page Not Found</h2>
