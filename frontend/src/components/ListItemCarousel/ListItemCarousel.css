@@ -1,0 +1,9 @@
+.image-cover{
+  min-width: 200px;
+  max-width: 200px;
+  max-height: 175px;
+  min-height: 175px;
+  margin: 5px;
+  border-radius: 8px;
+
+}

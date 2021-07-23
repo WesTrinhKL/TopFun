@@ -1,4 +1,4 @@
-import  React , {useRef, useState} from 'react'
+import  React , {useRef, useState, useEffect} from 'react'
 
 
 import './ListCarousel.css';
@@ -6,11 +6,20 @@ import './ListCarousel.css';
 
 export const ListCarousel = (props) => {
 
-  // const refFromUseRef = useRef();
-  // [increment, setIncrement] = useState(772);
-  // [scrollPosition, setScrollPosition] = useState(0);
-  // [scrollMax, setScrollMax] =
-  // refFromUseRef.current.scrollLeft = 0;
+  const refFromUseRef = useRef();
+  const [increment, setIncrement] = useState(800);
+  const [scrollPosition, setScrollPosition] = useState(0);
+  const [scrollMax, setScrollMax] = useState(props.listItemsArray.length * 200 -820 -19);
+
+  console.log(scrollMax);
+
+  useEffect(() => {
+    refFromUseRef.current = 0;
+    return () => {
+
+    }
+  }, [refFromUseRef])
+
 
   return (
     <div className="full-item-wrapper">

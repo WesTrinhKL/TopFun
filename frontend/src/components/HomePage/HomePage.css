@@ -22,7 +22,22 @@ body{
   /* background-color: rgb(255, 255, 255);
   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2); */
   height: 95vh;
+}
 
+.feed-menu-dropdown{
+  width: 90%;
+  margin: auto;
+  padding-left: 5px;
+  margin-bottom: 25px;
+  margin-top: 5px;
+  display: flex;
+  color: rgb(57, 69, 88);
+  font-weight: bold;
+}
+
+.d-icon{
+  margin-left: 5px;
+  margin-top:2px;
 }
 
 .all-lists-container{
@@ -40,18 +55,21 @@ body{
 .grid-item-people{
   grid-area: people;
   background-color: rgb(255, 255, 255);
-  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+  /* box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2); */
   height: 30vh;
+  border-radius: 4px;
 }
 .grid-item-explore{
   grid-area: explore;
   background-color: rgb(255, 255, 255);
-  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+  /* box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2); */
   height: 30vh;
+  border-radius: 4px;
 }
 .grid-item-footer{
   grid-area: footer;
   background-color: rgb(255, 255, 255);
-  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+  /* box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2); */
   height: 30vh;
+  border-radius: 4px;
 }
