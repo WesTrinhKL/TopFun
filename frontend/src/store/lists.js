@@ -45,7 +45,7 @@ export const createListThunk = (payload) => async(dispatch) =>{
 export const fetchSingleListBasedOnId = (id) => async(dispatch) => {
   const response = await csrfFetch(`/api/lists/${id}/items`);
   const singleList = await response.json();
-  dispatch(fetchSingleListItems(payload));
+  dispatch(fetchSingleListItems(singleList));
   return response;
 }
 
@@ -69,6 +69,7 @@ const listReducer = (state=initialState, action) =>{
     //@contains both the list metadata + each single list items data. (key = 'listItems' to access key data)
     case FETCH_LIST_ITEMS:{
       newState.singeListItems = action.payload;
+      return newState;
     }
     default:
       return state;

@@ -36,6 +36,9 @@ function App() {
             <Route exact path='/homepage'>
               <HomePage />
             </Route>
+            <Route path="/view-list/:id">
+              <ViewListPage />
+            </Route>
             <Route path="/login">
               <LoginFormPage />
             </Route>
@@ -45,9 +48,7 @@ function App() {
             <Route path="/create-list">
               <CreateListForm />
             </Route>
-            <Route path="/view-list/:id">
-              <ViewListPage />
-            </Route>
+
             <Route path="/">
             <h2>$04: Page Not Found</h2>
           </Route>

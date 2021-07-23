@@ -27,7 +27,6 @@ function Navigation({ isLoaded }){
         <NavLink className="nav-container__signup" exact to="/signup">Sign Up</NavLink>
       </>
     );
-
   }
 
 
