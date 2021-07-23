@@ -5,6 +5,7 @@ import ProfileButton from './ProfileButton';
 import './Navigation.css';
 import purbluelogoimg from '../../images/purbluelogo2.png'
 import { useNavbar } from '../../context/NavbarContext';
+import { CreateListButton } from './CreateListButton';
 
 function Navigation({ isLoaded }){
 
@@ -14,7 +15,10 @@ function Navigation({ isLoaded }){
   let sessionLinks;
   if (sessionUser) { //determine what to render if user is logged in
     sessionLinks = (
-      <ProfileButton user={sessionUser} />
+      <div className="logged-in-buttons">
+        <CreateListButton user={sessionUser} />
+        <ProfileButton user={sessionUser} />
+      </div>
     );
   } else {
     sessionLinks = (

@@ -109,3 +109,9 @@
   font-weight: bold;
   /* color: white; */
 }
+
+/* navbar buttons */
+.logged-in-buttons{
+  display: flex;
+  justify-content: space-around;
+}

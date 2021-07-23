@@ -9,6 +9,7 @@ import { LandingPage } from "./components/LandingPage";
 import { HomePage} from "./components/HomePage";
 import './index.css'
 import { useNavbar } from "./context/NavbarContext";
+import { CreateListForm } from "./components/CreateListForm";
 
 function App() {
 
@@ -40,6 +41,12 @@ function App() {
             <Route path="/signup">
               <SignupFormPage />
             </Route>
+            <Route path="/create-list">
+              <CreateListForm />
+            </Route>
+            <Route path="/">
+            <h2>$04: Page Not Found</h2>
+          </Route>
           </Switch>
         )}
     </>

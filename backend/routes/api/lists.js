@@ -2,7 +2,7 @@
 const express = require('express');
 const asyncHandler = require('express-async-handler');
 
-const { requireAuth, restoreUser } = require('../../utils/auth');
+const { requireAuth } = require('../../utils/auth');
 const { User } = require('../../db/models');
 const {List} = require('../../db/models');
 const {Category} = require('../../db/models');
@@ -168,6 +168,54 @@ router.post('/listId/:id/item', requireAuth, validateListItem, asyncHandler(asyn
       userId: userId,
     })
     return res.json(createListItem);
+  }else{
+    const err = new Error('Unauthorized');
+    err.title = 'Unauthorized';
+    err.errors = ['Unauthorized'];
+    err.status = 401;
+    throw err;
+  }
+}))
+
+router.post('/listId/:id/update/item/:itemId', requireAuth, validateListItem, asyncHandler(async(req,res)=>{
+  //very list id is accessible by user
+  const paramListId = req.params.id;
+  const userId = req.user.id;
+  const listFoundVerified = await List.findOne({
+    where: {
+      [Op.and]: [
+        {userId:userId},
+        {id:paramListId}
+      ]
+    }
+  })
+  if(listFoundVerified){ //once validated
+    // gather data from form and add list item
+    const itemId = req.params.itemId;
+    const listItemToUpdate = await ListItem.findByPk(itemId)
+    if (listItemToUpdate){
+      const {
+        title,
+        currentRank,
+        content,
+        imageLink,
+      } = req.body;
+
+      //ensure that currentRank is unique later.
+      await ListItem.update({
+        title,
+        currentRank,
+        content,
+        imageLink,
+      }, {
+        where: {id:itemId},
+        returning: true,
+        plain:true,
+      })
+      const returnedItem = await ListItem.findByPk(itemId)
+      return res.json(returnedItem);
+    }
+
   }else{
     const err = new Error('Unauthorized');
     err.title = 'Unauthorized';

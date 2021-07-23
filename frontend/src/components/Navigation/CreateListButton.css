@@ -1,0 +1,12 @@
+.create-list-button-wrapper{
+  margin: 3px 15px 5px 0px;
+}
+
+.upload-icon{
+  color: white;
+  font-size: 25px;
+}
+
+.create-list-button:hover{
+  cursor: pointer;
+}
