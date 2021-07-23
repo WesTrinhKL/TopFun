@@ -154,22 +154,27 @@ router.post('/listId/:id/item', requireAuth, validateListItem, asyncHandler(asyn
       currentRank,
       content,
       imageLink,
-      paramListId
     } = req.body;
 
     //ensure that currentRank is unique later.
-
+    const listId = paramListId;
+    console.log("value of list ID:",listId)
     const createListItem = await ListItem.create({
       title,
       currentRank,
       content,
       imageLink,
-      listId:paramListId,
+      listId: listId,
       userId: userId,
     })
     return res.json(createListItem);
+  }else{
+    const err = new Error('Unauthorized');
+    err.title = 'Unauthorized';
+    err.errors = ['Unauthorized'];
+    err.status = 401;
+    throw err;
   }
-
 }))
 
 
