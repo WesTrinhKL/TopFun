@@ -18,7 +18,7 @@ const validateCreateList = [ //will run each middleware below (your req will be 
     .notEmpty()
     .withMessage('Please provide a valid title.')
     .isLength({ max: 255 })
-    .withMessage('Title Cannot be more than 22 characters long'),
+    .withMessage('Title Cannot be more than 255 characters long'),
   check('coverPhotoLink')
     .exists({ checkFalsy: true })
     .notEmpty()
@@ -31,6 +31,24 @@ const validateCreateList = [ //will run each middleware below (your req will be 
     .exists({ checkFalsy: true })
     .notEmpty()
     .withMessage('Please provide a valid categoryName.'),
+  handleValidationErrors,
+];
+
+const validateListItem = [ //will run each middleware below (your req will be screened each time)
+  check('title')
+    .exists({ checkFalsy: true })
+    .notEmpty()
+    .withMessage('Please provide a valid title.')
+    .isLength({ max: 255 })
+    .withMessage('Title Cannot be more than 255 characters long'),
+  check('imageLink')
+    .exists({ checkFalsy: true })
+    .notEmpty()
+    .withMessage('Please provide a valid image.'),
+  check('currentRank')
+    .exists({ checkFalsy: true })
+    .notEmpty()
+    .withMessage('Please provide a valid rank.'),
   handleValidationErrors,
 ];
 
@@ -113,6 +131,48 @@ router.post('/create', requireAuth, validateCreateList, asyncHandler(async (req,
   })
   return res.json(createNewList);
 }) )
+
+//@create item in list
+//send post with 'list id' param and list item
+//verify that the 'list id' sent belongs to user
+router.post('/listId/:id/item', requireAuth, validateListItem, asyncHandler(async(req,res)=>{
+  //very list id is accessible by user
+  const paramListId = req.params.id;
+  const userId = req.user.id;
+  const listFoundVerified = await List.findOne({
+    where: {
+      [Op.and]: [
+        {userId:userId},
+        {id:paramListId}
+      ]
+    }
+  })
+  if(listFoundVerified){ //once validated
+    // gather data from form and add list item
+    const {
+      title,
+      currentRank,
+      content,
+      imageLink,
+      paramListId
+    } = req.body;
+
+    //ensure that currentRank is unique later.
+
+    const createListItem = await ListItem.create({
+      title,
+      currentRank,
+      content,
+      imageLink,
+      listId:paramListId,
+      userId: userId,
+    })
+    return res.json(createListItem);
+  }
+
+}))
+
+
 
 //@delete a category
 router.post('/category/delete/:id', requireAuth, asyncHandler(async (req,res)=>{
