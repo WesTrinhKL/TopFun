@@ -15,6 +15,11 @@ export const createListAction = (payload) =>({
   payload,
 })
 
+export const fetchSingleListItems = (payload) =>({
+  type: FETCH_LIST_ITEMS,
+  payload,
+})
+
 
 /* ----- THUNK MIDDLEWARE ------ */
 export const fetchHomeFeed = () => async(dispatch) => {
@@ -37,10 +42,19 @@ export const createListThunk = (payload) => async(dispatch) =>{
   return response;
 }
 
+export const fetchSingleListBasedOnId = (id) => async(dispatch) => {
+  const response = await csrfFetch(`/api/lists/${id}/items`);
+  const singleList = await response.json();
+  dispatch(fetchSingleListItems(payload));
+  return response;
+}
+
 /* ----- REDUCERS ------ */
 const initialState = {
   homepageFeedGlobal:null,
-  createdList:null};
+  createdList:null,
+  singeListItems:null,
+};
 const listReducer = (state=initialState, action) =>{
   let newState = {...state};
   switch (action.type) {
@@ -51,6 +65,10 @@ const listReducer = (state=initialState, action) =>{
     case CREATE_LIST:{
       newState.createdList = action.payload;
       return newState;
+    }
+    //@contains both the list metadata + each single list items data. (key = 'listItems' to access key data)
+    case FETCH_LIST_ITEMS:{
+      newState.singeListItems = action.payload;
     }
     default:
       return state;

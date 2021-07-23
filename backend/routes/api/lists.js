@@ -51,12 +51,18 @@ const validateListItem = [ //will run each middleware below (your req will be sc
     .withMessage('Please provide a valid rank.'),
   handleValidationErrors,
 ];
+const router = express.Router();
 
+
+// -----------------Lists-------------------
 
 //@fetch one single list and its items based on list id
-const router = express.Router();
-router.get('/global-feed-lists', asyncHandler(async (req, res)=>{
-  const lists = await List.findAll({
+router.get('/:id/items', asyncHandler(async (req, res)=>{
+  const listIdFromParams = req.params.id;
+  const lists = await List.findOne({
+    where:{
+      id:listIdFromParams
+    },
     include: [
       {
         model: User,
@@ -67,7 +73,7 @@ router.get('/global-feed-lists', asyncHandler(async (req, res)=>{
         as: 'listItems',
       },
     ],
-    limit: 10,
+    limit: 20,
   });
   return res.json(lists);
   // returns an array of users obj, with arrays(lists key) of lists obj.
