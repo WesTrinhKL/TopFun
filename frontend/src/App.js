@@ -11,6 +11,7 @@ import './index.css'
 import { useNavbar } from "./context/NavbarContext";
 import { CreateListForm } from "./components/CreateListForm";
 import { ViewListPage } from "./components/ViewListPage";
+import { CreateItemForm } from "./components/CreateItemForm";
 
 function App() {
 
@@ -47,6 +48,9 @@ function App() {
             </Route>
             <Route path="/create-list">
               <CreateListForm />
+            </Route>
+            <Route path="/add/item/modal">
+              <CreateItemForm />
             </Route>
 
             <Route path="/">

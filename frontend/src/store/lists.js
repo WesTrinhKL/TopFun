@@ -4,6 +4,7 @@ import { csrfFetch } from "./csrf";
 const SET_HOMEPAGE_FEED = "lists/homepage/global-feed"
 const CREATE_LIST = "lists/create-list";
 const FETCH_LIST_ITEMS = "lists/listitems";
+const CREATE_ITEM = "lists/create-item";
 
 export const setHomepageFeed = (homePageFeed) => ({
   type: SET_HOMEPAGE_FEED,
@@ -17,6 +18,12 @@ export const createListAction = (payload) =>({
 
 export const fetchSingleListItems = (payload) =>({
   type: FETCH_LIST_ITEMS,
+  payload,
+})
+
+export const createItemAction = (payload, id) =>({
+  type: CREATE_ITEM,
+  id,
   payload,
 })
 
@@ -35,9 +42,9 @@ export const createListThunk = (payload) => async(dispatch) =>{
     body: JSON.stringify(payload),
   });
   if(response.ok){
-
     const createListData = await response.json();
     dispatch(createListAction(createListData));
+    return createListData;
   }
   return response;
 }
@@ -49,11 +56,24 @@ export const fetchSingleListBasedOnId = (id) => async(dispatch) => {
   return response;
 }
 
+export const createItemThunk = (payload, id) => async(dispatch) =>{
+  const response = await csrfFetch(`/api/lists/listId/${id}/add/item`, {
+    method: "post",
+    body: JSON.stringify(payload),
+  });
+  if(response.ok){
+    const createItemData = await response.json();
+    dispatch(createItemAction(createItemData));
+  }
+  return response;
+}
+
 /* ----- REDUCERS ------ */
 const initialState = {
   homepageFeedGlobal:null,
   createdList:null,
   singeListItems:null,
+  itemCreated:null,
 };
 const listReducer = (state=initialState, action) =>{
   let newState = {...state};
@@ -69,6 +89,10 @@ const listReducer = (state=initialState, action) =>{
     //@contains both the list metadata + each single list items data. (key = 'listItems' to access key data)
     case FETCH_LIST_ITEMS:{
       newState.singeListItems = action.payload;
+      return newState;
+    }
+    case CREATE_ITEM:{
+      newState.itemCreated = action.payload;
       return newState;
     }
     default:

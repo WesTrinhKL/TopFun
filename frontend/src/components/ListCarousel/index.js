@@ -15,8 +15,7 @@ export const ListCarousel = (props) => {
         <div className="author-title">Made by: {props.userObj.username}</div>
         {/* <img className="image-cover" src={props.coverPhotoLink} alt="img" /> */}
         {props.listItemsArray.map(listItem=>(
-          <img className="image-cover" src={listItem.imageLink} alt="img" />
-
+          <img key={listItem.id} className="image-cover" src={listItem.imageLink} alt="img" />
         ))}
       </div>
       <Link to={`/view-list/${props.id}`} className="list-view-button" href="">view full list</Link>
