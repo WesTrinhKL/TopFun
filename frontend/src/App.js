@@ -54,7 +54,7 @@ function App() {
             </Route> */}
 
             <Route path="/">
-            <h2>$04: Page Not Found</h2>
+            <h2>404: Page Not Found</h2>
           </Route>
           </Switch>
         )}
