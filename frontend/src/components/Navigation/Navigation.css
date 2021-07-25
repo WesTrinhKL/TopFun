@@ -48,28 +48,16 @@
   display: flex;
   align-items: center;
   height: 50px;
-
-
-
 }
 
-.nav-container__signup, .nav-container__login {
-  color: rgb(22, 41, 83);
 
-  font-size: 18px;
-  text-decoration: none;
-}
-
-.nav-container__login{
-  color: white;
-  padding-right: 20px;
-  font-size: small;
-}
 .nav-container__login:hover {
   color: rgb(196, 196, 196);
 }
 
 .nav-container__signup{
+  color: rgb(22, 41, 83);
+  text-decoration: none;
   /* border: 1px solid black; */
   background-color: white;
   padding: 6px;

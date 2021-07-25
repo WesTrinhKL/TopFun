@@ -1,13 +1,14 @@
-
+// frontend/src/context/Modal.js
 import React, { useContext, useRef, useState, useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import './Modal.css';
 
 const ModalContext = React.createContext();
+export const useModal = () => useContext(ModalContext);
 
 export function ModalProvider({ children }) {
   const modalRef = useRef();
-  const [value, setValue] = useState();
+  const [value, setValue] = useState(false);
 
   useEffect(() => {
     setValue(modalRef.current);

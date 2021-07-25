@@ -86,3 +86,15 @@
   /* margin-top: 10px; */
   font-size: 12px;
 }
+
+/* index.js modal login button */
+.login-button-modal{
+  color: white;
+  padding-right: 20px;
+  font-size: small;
+  background-color: transparent;
+}
+.login-button-modal:hover {
+  color: rgb(168, 163, 163);
+  cursor: pointer;
+}

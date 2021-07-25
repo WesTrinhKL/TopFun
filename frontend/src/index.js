@@ -7,6 +7,7 @@ import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import configureStore from './store';
 import { restoreCSRF, csrfFetch } from './store/csrf';
+import { ModalProvider } from "./context/Modal";
 
 // thunk and redux
 import * as sessionActions from './store/session';
@@ -26,11 +27,14 @@ if (process.env.NODE_ENV !== 'production') { //in dev
 function Root() {
   return (
     <Provider store={store}>
-      <NavbarProvider>
-        <BrowserRouter>
-          <App />
-        </BrowserRouter>
-      </NavbarProvider>
+      <ModalProvider>
+        <NavbarProvider>
+          <BrowserRouter>
+            <App />
+          </BrowserRouter>
+        </NavbarProvider>
+      </ModalProvider>
+
 
     </Provider>
   );

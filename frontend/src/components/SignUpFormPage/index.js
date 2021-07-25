@@ -42,7 +42,7 @@ function SignupFormPage() {
     </div>
     <div className="form-container">
 
-      <form className="form-background" onSubmit={handleSubmit}>
+      <form className="form-background-sign-up" onSubmit={handleSubmit}>
         <h1>Sign Up</h1>
         <ul className="error-group">
           {errors.map((error, idx) => <li key={idx}>{error}</li>)}

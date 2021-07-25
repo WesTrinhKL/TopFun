@@ -1,27 +1,28 @@
 import React, {useState} from 'react';
 import { loginUser } from "../../store/session";
 import {useDispatch, useSelector} from 'react-redux';
-import {Redirect} from 'react-router-dom';
+import {Redirect, useHistory} from 'react-router-dom';
 import { useNavbar } from '../../context/NavbarContext';
 import landingbg from '../../images/landingbg.jpg'
 import { Link } from 'react-router-dom';
 
+
 import './LoginForm.css';
 
-export const LoginFormPage = () => {
+const LoginForm = () => {
 
-  const {setNavLandingStyle} = useNavbar();
-  setNavLandingStyle("nav-wrapper-not-landing");
+  // const {setNavLandingStyle} = useNavbar();
+  // setNavLandingStyle("nav-wrapper-not-landing");
 
 
   const dispatch = useDispatch();
-  const sessionUser = useSelector(state => state.session.user); //get redux store's user data
+  // const sessionUser = useSelector(state => state.session.user); //get redux store's user data
   const [credential, setCredential] = useState(''); //username/email
   const [password, setPassword] = useState('');
   const [errors, setErrors] = useState([]);
-  if(sessionUser) return ( //if user's session already exist
-    <Redirect to='/'/>
-  )
+  // if(sessionUser) return ( //if user's session already exist
+  //   <Redirect to='/'/>
+  // )
 
 
   const handleSubmit = async (e) =>{
@@ -37,9 +38,9 @@ export const LoginFormPage = () => {
 
   return (
     <>
-    <div>
+    {/* <div>
       <img className="landing-img" src={landingbg} alt="" />
-    </div>
+    </div> */}
     <div className="form-container">
 
       <form className="form-background" onSubmit={handleSubmit}>
@@ -83,7 +84,7 @@ export const LoginFormPage = () => {
         <hr />
         <button className="redirect-signup">
           <span>Not a member yet? </span>
-          <Link to='/signup'>Sign up here!</Link>
+          <Redirect to='/signup'>Sign up here!</Redirect>
         </button>
       </form>
 
@@ -92,3 +93,4 @@ export const LoginFormPage = () => {
     </>
   )
 }
+export default LoginForm;

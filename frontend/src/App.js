@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { Route, Switch } from "react-router-dom";
-import { LoginFormPage } from "./components/LoginFormPage";
+// import { LoginFormPage } from "./components/LoginFormPage";
 import SignupFormPage from "./components/SignUpFormPage";
 import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
@@ -22,7 +22,7 @@ function App() {
     dispatch(sessionActions.restoreUser()).then(() => setIsLoaded(true)); //only after attempting to restore user is the isLoaded set to true  (after attempting to render).
   }, [dispatch]);
 
-  return isLoaded && (
+  return  (
     // <div className="app-container">
     //   <div className="app-navbar--sticky">
 
@@ -40,9 +40,9 @@ function App() {
             <Route path="/view-list/:id">
               <ViewListPage />
             </Route>
-            <Route path="/login">
+            {/* <Route path="/login">
               <LoginFormPage />
-            </Route>
+            </Route> */}
             <Route path="/signup">
               <SignupFormPage />
             </Route>

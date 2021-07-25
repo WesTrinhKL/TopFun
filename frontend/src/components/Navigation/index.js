@@ -2,15 +2,18 @@ import React, { useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
-import './Navigation.css';
 import purbluelogoimg from '../../images/purbluelogo2.png'
-import { useNavbar } from '../../context/NavbarContext';
 import { CreateListButton } from './CreateListButton';
+import LoginFormModal from '../LoginFormModal';
+
+import { useNavbar } from '../../context/NavbarContext';
+import './Navigation.css';
 
 function Navigation({ isLoaded }){
 
   const sessionUser = useSelector(state => state.session.user);
   const {navbarStyle} = useNavbar(); //set navigation style based on global nav context
+
 
   let sessionLinks;
   if (sessionUser) { //determine what to render if user is logged in
@@ -23,17 +26,11 @@ function Navigation({ isLoaded }){
   } else {
     sessionLinks = (
       <>
-        <NavLink className="nav-container__login" exact to="/login">Log In</NavLink>
+        <LoginFormModal/>
         <NavLink className="nav-container__signup" exact to="/signup">Sign Up</NavLink>
       </>
     );
   }
-
-
-  // useEffect(()=>{
-  //   setNavLandingStyle(window.location.pathname === '/'? "nav-wrapper": "nav-wrapper-not-landing");
-  //   console.log("nav use effect");
-  // }, [navLandingStyle])
 
   console.log("this is the pathname", window.location.pathname);
 
@@ -42,7 +39,7 @@ function Navigation({ isLoaded }){
   return (
     // <div className="background-nav-container">
     <>
-      <nav className={navbarStyle}>
+      <div className={navbarStyle}>
         <div className="nav-container">
           <NavLink className="nav-container__home" exact to="/">
             <img className="logo" src={purbluelogoimg} alt="sd" />
@@ -53,7 +50,7 @@ function Navigation({ isLoaded }){
             {isLoaded && sessionLinks}
           </div>
         </div>
-      </nav>
+      </div>
     </>
 
   );

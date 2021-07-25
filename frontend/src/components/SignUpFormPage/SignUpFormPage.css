@@ -1,3 +1,27 @@
+
+
+.form-container{
+  /* position: relative; */
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 90vh;
+
+}
+.form-background-sign-up{
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  align-items: center;
+  /* position: absolute; */
+  padding: 65px 40px;
+  border-radius: 3px;
+  /* top: 0; */
+}
+
 .redirect-signin{
   border-style: none;
   background-color: white;
@@ -17,4 +41,26 @@
   font-size: 12px;
   font-weight: bold;
   height: 30px;
+}
+
+.username-container, input{
+  width: 250px;
+}
+
+.username-container, .password-container{
+  margin: 8px;
+}
+
+.placeholder{
+  font-size: small;
+  color: rgb(165, 165, 165)
+}
+
+.error-group{
+  margin-bottom: 15px;
+  margin-top:5px;
+  color: rgb(230, 63, 63);
+  width: 250px;
+  font-size: small;
+  text-align: center;
 }
