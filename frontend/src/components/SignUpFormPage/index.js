@@ -6,6 +6,7 @@ import { useNavbar } from '../../context/NavbarContext';
 import './SignUpFormPage.css'
 import { Link } from 'react-router-dom';
 import signup from '../../images/signup.jpg'
+import LoginFormModal from "../LoginFormModal";
 
 function SignupFormPage() {
   const {setNavLandingStyle} = useNavbar();
@@ -93,13 +94,10 @@ function SignupFormPage() {
         </div>
 
         <button className="signup-button" type="submit">
-          Log In
+          Register
         </button>
 
-        <button className="redirect-signin">
-          <span>Already a member ? </span>
-          <Link to='/login'>Sign in here!</Link>
-        </button>
+
       </form>
     </div>
     </>

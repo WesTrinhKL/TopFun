@@ -57,8 +57,8 @@ const LoginForm = () => {
 
         {/* username */}
         <div className="username-container">
-          <div className="placeholder">Username or Email</div>
-          <input
+          <div className="placeholder">Username or Email:</div>
+          <input className="input-login-style"
               type="text"
               value={credential}
               onChange={(e) => setCredential(e.target.value)}
@@ -69,8 +69,8 @@ const LoginForm = () => {
 
         {/* password */}
         <div className="password-container">
-          <div className="placeholder">Password</div>
-          <input
+          <div className="placeholder">Password:</div>
+          <input className="input-login-style"
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
@@ -81,10 +81,9 @@ const LoginForm = () => {
         <button className="signin-button" type="submit">
           Log In
         </button>
-        <hr />
         <button className="redirect-signup">
           <span>Not a member yet? </span>
-          <Redirect to='/signup'>Sign up here!</Redirect>
+          <a href="/signup">Sign up here!</a>
         </button>
       </form>
 

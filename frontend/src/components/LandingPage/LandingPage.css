@@ -31,7 +31,7 @@
 }
 
 .landing-header{
-  margin-bottom: 40px;
+  margin-bottom: 20px;
   color: white;
   font-size: 40px;
   font-weight: 900;
@@ -39,7 +39,7 @@
 }
 
 .landing-body{
-  width: 50%;
+  width: 35%;
   color: white;
   font-size: 22px;
   font-weight: bold;
@@ -56,9 +56,11 @@
   font-weight: bold;
   width: 12%;
   margin-top: 25px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.25);
 
 
 }
 .join-button:hover {
   color: rgb(168, 163, 163);
+  box-shadow:  0 5px 10px rgba(0,0,0,0.22);
 }

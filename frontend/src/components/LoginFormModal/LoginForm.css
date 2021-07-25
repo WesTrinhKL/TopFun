@@ -41,6 +41,10 @@
   font-weight: bold;
   height: 30px;
 }
+.signin-button:hover{
+  cursor: pointer;
+  box-shadow:0 4px 7px rgba(0,0,0,0.22);
+}
 
 /* div input{
   text-decoration: none;
@@ -67,7 +71,7 @@
 
 .placeholder{
   font-size: small;
-  color: rgb(165, 165, 165)
+  color: rgb(136, 136, 136)
 }
 
 .error-group{
@@ -85,9 +89,34 @@
   padding-top: 10px;
   /* margin-top: 10px; */
   font-size: 12px;
+  margin-top: 10px;
 }
 
-/* index.js modal login button */
+.input-login-style{
+  /* width: 90%; */
+  border: none;
+  margin: 5px auto 5px auto;
+  padding: 10px 0;
+  border-radius: 3px;
+  padding-left: 10px;
+  padding-right: 10px;
+  /* border-bottom: 1px solid rgb(201, 201, 201); */
+  box-shadow: 0 2px 5px rgba(0,0,0,0.25);
+}
+.input-login-style:hover {
+  box-shadow:  0 5px 10px rgba(0,0,0,0.22);
+}
+.input-login-style:focus{
+  outline: none;
+  /* border:1px solid red; */
+  box-shadow: 0 0 5px #719ECE;
+  border-radius: 3px;
+}
+
+
+
+
+/* LogingFormModal/index.js styles*/
 .login-button-modal{
   color: white;
   padding-right: 20px;
