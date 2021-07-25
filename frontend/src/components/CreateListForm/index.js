@@ -37,7 +37,6 @@ export const CreateListForm = () => {
         history.push(`/view-list/${data.id}`);
       }).catch(async (res) => {
         const data = await res.json();
-        console.log("this is the error data", data);
         if (data && data.errors) setErrors(data.errors);
       });
     }

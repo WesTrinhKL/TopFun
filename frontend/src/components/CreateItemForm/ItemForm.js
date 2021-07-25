@@ -6,7 +6,7 @@ import { useHistory } from 'react-router';
 
 
 
-export const ItemForm = () => {
+export const ItemForm = ({listId}) => {
 
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
@@ -24,24 +24,23 @@ export const ItemForm = () => {
 
   const onFormSubmitCreateList = (e)=>{
     e.preventDefault();
-    // if(!sessionUser) history.push('/')
-    // else{
-    //   e.preventDefault();
-    //   const payload = {
-    //     title,
-    //     imageLink,
-    //     content,
-    //     currentRank,
-    //   }
-    //   setErrors([]);
-    //   return dispatch(createItemThunk(payload,1)).then(()=>{
-    //     history.push(`/view-list/1`);
-    //   }).catch(async (res) =>{
-    //     const data = await res.json();
-    //     if(data && data.errors) setErrors(data.errors);
-    //   })
-    // }
-    console.log("yes");
+    if(!sessionUser) history.push('/')
+    else{
+      const payload = {
+        title,
+        imageLink,
+        content,
+        currentRank,
+      }
+      setErrors([]);
+      return dispatch(createItemThunk(payload,listId)).then((data)=>{
+        console.log("item creation returned data: ", data);
+        history.push(`/view-list/${listId}`);
+      }).catch(async (res) =>{
+        const data = await res.json();
+        if(data && data.errors) setErrors(data.errors);
+      })
+    }
   }
 
   const setTitleE = (e) => setTitle(e.target.value);
@@ -146,7 +145,7 @@ export const ItemForm = () => {
   const fourth = (
     <div className="input-wrapper-item">
       <label className="form-label-spacing-item">
-        Rank(Optional):
+        Score(Optional):
       </label>
       <input className="input-box-style"
           placeholder="enter a number here..."

@@ -24,7 +24,7 @@ export const ViewListPage = () => {
     if(currentUserId === singleListItems.userId) {
       iAmTheUserButtonAddItem =  (
         <div className="add-item-button">
-          <ItemFormModal/>
+          <ItemFormModal listId={singleListItems.id}/>
         </div>
       )
     }

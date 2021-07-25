@@ -3,7 +3,7 @@ import { Modal } from '../../context/Modal';
 import { ModalVerify } from '../../context/Modal';
 import { ItemForm } from './ItemForm';
 
-function ItemFormModal() {
+function ItemFormModal({listId}) {
   const [showModal, setShowModal] = useState(false);
   const [verifyClose, setVerifyClose] = useState(false);
 
@@ -19,7 +19,7 @@ function ItemFormModal() {
       {showModal && (
         <Modal onClose={() => setVerifyClose(true)} >
 
-          <ItemForm />
+          <ItemForm listId={listId}/>
         </Modal>
       )}
 

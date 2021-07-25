@@ -64,6 +64,7 @@ export const createItemThunk = (payload, id) => async(dispatch) =>{
   if(response.ok){
     const createItemData = await response.json();
     dispatch(createItemAction(createItemData));
+    return createItemData;
   }
   return response;
 }
