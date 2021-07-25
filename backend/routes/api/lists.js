@@ -161,7 +161,7 @@ router.post('/create', requireAuth, validateCreateList, asyncHandler(async (req,
 //@create item in list
 //send post with 'list id' param and list item
 //verify that the 'list id' sent belongs to user
-router.post('/listId/:id/item', requireAuth, validateListItem, asyncHandler(async(req,res)=>{
+router.post('/listId/:id/add/item', requireAuth, validateListItem, asyncHandler(async(req,res)=>{
   //very list id is accessible by user
   const paramListId = req.params.id;
   const userId = req.user.id;
