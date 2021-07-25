@@ -9,6 +9,7 @@ import { useHistory } from 'react-router';
 export const ItemForm = ({listId}) => {
 
   const dispatch = useDispatch();
+  const history = useHistory();
   const sessionUser = useSelector((state) => state.session.user);
   const singleListItems = useSelector((state) => state.lists.singleListItems);
 
@@ -19,8 +20,6 @@ export const ItemForm = ({listId}) => {
   const [extraLink, setextraLink] = useState("");
   const [errors, setErrors] = useState([]);
   const [currentOption, setCurrentOption] = useState(1);
-
-  const history = useHistory();
 
   const onFormSubmitCreateList = (e)=>{
     e.preventDefault();
@@ -36,6 +35,7 @@ export const ItemForm = ({listId}) => {
       return dispatch(createItemThunk(payload,listId)).then((data)=>{
         console.log("item creation returned data: ", data);
         history.push(`/view-list/${listId}`);
+        window.location.reload();
       }).catch(async (res) =>{
         const data = await res.json();
         if(data && data.errors) setErrors(data.errors);

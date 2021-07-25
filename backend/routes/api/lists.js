@@ -61,19 +61,23 @@ router.get('/:id/items', asyncHandler(async (req, res)=>{
   const listIdFromParams = req.params.id;
   const lists = await List.findOne({
     where:{
-      id:listIdFromParams
+      id:listIdFromParams,
     },
     include: [
       {
         model: User,
         as: 'user',
+        // order:[['id', 'DESC']],
       },
       {
         model: ListItem,
         as: 'listItems',
+        // order:[[List, ListItem, 'id', 'DESC']],
       },
     ],
     limit: 20,
+
+
   });
   return res.json(lists);
   // returns an array of users obj, with arrays(lists key) of lists obj.

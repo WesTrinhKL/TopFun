@@ -9,6 +9,7 @@ import ItemFormModal from '../CreateItemForm';
 
 export const ViewListPage = () => {
   let {id} = useParams();
+  console.log("this is the id value: ", id)
   const dispatch = useDispatch();
 
   const singleListItems = useSelector(state=>state.lists.singeListItems);
@@ -17,7 +18,6 @@ export const ViewListPage = () => {
   const [iAmTheUser, setIAmTheUser] = useState(false);
 
   let currentUserId = sessionUser.id;
-
 
   let iAmTheUserButtonAddItem;
   if(singleListItems && sessionUser){
@@ -30,10 +30,16 @@ export const ViewListPage = () => {
     }
   }
 
-
   useEffect(()=>{
     dispatch(fetchSingleListBasedOnId(id));
   },[dispatch])
+
+  if (!singleListItems) {
+    return null;
+  }
+
+  let singleListItemsReversed = [...singleListItems.listItems].reverse();
+  console.log("reversed" , singleListItemsReversed)
 
 
   // let title;
@@ -67,11 +73,11 @@ export const ViewListPage = () => {
           List Items Go Here
         </div>
         <div>
-            {iAmTheUserButtonAddItem}
+            {singleListItems && iAmTheUserButtonAddItem}
         </div>
         <div className="list-wrapper">
 
-          {singleListItems && singleListItems.listItems.map(listItem=>(
+          {singleListItems && singleListItemsReversed.map(listItem=>(
             <div className="item-wrapper">
               <img className="image-cover" src={listItem.imageLink} alt="img" />
               <div className="title-and-content">
