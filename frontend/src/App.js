@@ -8,7 +8,6 @@ import Navigation from "./components/Navigation";
 import { LandingPage } from "./components/LandingPage";
 import { HomePage} from "./components/HomePage";
 import './index.css'
-import { useNavbar } from "./context/NavbarContext";
 import { CreateListForm } from "./components/CreateListForm";
 import { ViewListPage } from "./components/ViewListPage";
 

@@ -10,6 +10,7 @@ export function ModalProvider({ children }) {
   const modalRef = useRef();
   const [value, setValue] = useState(false);
 
+
   useEffect(() => {
     setValue(modalRef.current);
   }, [])
@@ -24,6 +25,7 @@ export function ModalProvider({ children }) {
   );
 }
 
+
 export function Modal({ onClose, children }) {
   const modalNode = useContext(ModalContext);
   if (!modalNode) return null;
@@ -31,9 +33,37 @@ export function Modal({ onClose, children }) {
   return ReactDOM.createPortal(
     <div id="modal">
       <div id="modal-background" onClick={onClose} />
+
       <div id="modal-content">
         {children}
       </div>
+    </div>,
+    modalNode
+  );
+}
+
+export function ModalVerify({ offVerify, onClose,children }) {
+  const modalNode = useContext(ModalContext);
+  if (!modalNode) return null;
+
+  const verifyAndClose = () =>{
+    offVerify();
+    onClose();
+  }
+
+  return ReactDOM.createPortal(
+    <div id="modal">
+      <div id="modal-background" />
+      <div id="modal-content" className="modal-verify">
+        {children}
+        <div className="display-buttons">
+          <div  className="button-style-stay" onClick={offVerify}>Cancel</div>
+          <div className="button-style-exit" onClick={verifyAndClose}>Exit</div>
+        </div>
+
+
+      </div>
+
     </div>,
     modalNode
   );

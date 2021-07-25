@@ -13,6 +13,7 @@ export default function NavbarProvider({ children }) {
   return (
     <NavbarContext.Provider
       value={{ navbarStyle, setNavLandingStyle }}
+      // read from global context, and set global context style value
     >
       {children}
     </NavbarContext.Provider>

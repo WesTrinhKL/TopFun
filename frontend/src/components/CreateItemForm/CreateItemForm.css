@@ -168,3 +168,8 @@ textarea {
 .button-item-submit{
   background-color: #41d67a;
 }
+
+/* modal close child */
+.want-to-close{
+  padding: 20px;
+}

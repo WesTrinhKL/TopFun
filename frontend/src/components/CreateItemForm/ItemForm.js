@@ -23,7 +23,7 @@ export const ItemForm = () => {
   const history = useHistory();
 
   const onFormSubmitCreateList = (e)=>{
-    // e.preventDefault();
+    e.preventDefault();
     // if(!sessionUser) history.push('/')
     // else{
     //   e.preventDefault();
