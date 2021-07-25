@@ -5,6 +5,7 @@ import './ViewListPage.css'
 import {useDispatch ,useSelector } from 'react-redux';
 import { fetchSingleListBasedOnId } from '../../store/lists';
 import { Link } from 'react-router-dom';
+import ItemFormModal from '../CreateItemForm';
 
 export const ViewListPage = () => {
   let {id} = useParams();
@@ -23,7 +24,7 @@ export const ViewListPage = () => {
     if(currentUserId === singleListItems.userId) {
       iAmTheUserButtonAddItem =  (
         <div className="add-item-button">
-          <Link to='/add/item/modal'> Add Item To List </Link>
+          <ItemFormModal/>
         </div>
       )
     }

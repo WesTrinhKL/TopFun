@@ -1,16 +1,18 @@
-/* textarea {
+textarea {
   margin: 0;
   min-height: 120px;
 
 }
 
 .create-form-wrapper{
-  width: 60%;
+  width: 120vh;
+  /* min-height: 50vh;
+  max-height: 50vh; */
+  height: 70vh;
   margin: auto;
   display: flex;
   flex-direction: column;
   background-color: rgb(255, 255, 255);
-  min-height: 100%;
   margin-top: 25px;
 }
 
@@ -18,6 +20,11 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.form-elements-carousel{
+  height: 30vh;
+  width: 80vh;
 }
 
 .title-list{
@@ -50,4 +57,4 @@
 .cover-photo-preview{
   min-height: 200px;
   min-width: 200px;
-} */
+}

@@ -11,7 +11,7 @@ import './index.css'
 import { useNavbar } from "./context/NavbarContext";
 import { CreateListForm } from "./components/CreateListForm";
 import { ViewListPage } from "./components/ViewListPage";
-import { CreateItemForm } from "./components/CreateItemForm";
+
 
 function App() {
 
@@ -49,9 +49,9 @@ function App() {
             <Route path="/create-list">
               <CreateListForm />
             </Route>
-            <Route path="/add/item/modal">
+            {/* <Route path="/add/item/modal">
               <CreateItemForm />
-            </Route>
+            </Route> */}
 
             <Route path="/">
             <h2>$04: Page Not Found</h2>
