@@ -10,6 +10,7 @@ import { HomePage} from "./components/HomePage";
 import './index.css'
 import { CreateListForm } from "./components/CreateListForm";
 import { ViewListPage } from "./components/ViewListPage";
+import { EditList } from "./components/EditList";
 
 
 function App() {
@@ -47,6 +48,9 @@ function App() {
             </Route>
             <Route path="/create-list">
               <CreateListForm />
+            </Route>
+            <Route path="/edit-list/:id">
+              <EditList />
             </Route>
             {/* <Route path="/add/item/modal">
               <CreateItemForm />

@@ -3,6 +3,7 @@ import { csrfFetch } from "./csrf";
 /* ----- ACTIONS ------ */
 const SET_HOMEPAGE_FEED = "lists/homepage/global-feed"
 const CREATE_LIST = "lists/create-list";
+const UPDATE_LIST = "lists/update-list";
 const FETCH_LIST_ITEMS = "lists/listitems";
 const CREATE_ITEM = "lists/create-item";
 
@@ -13,6 +14,11 @@ export const setHomepageFeed = (homePageFeed) => ({
 
 export const createListAction = (payload) =>({
   type: CREATE_LIST,
+  payload,
+})
+
+export const updateListAction = (payload) =>({
+  type: UPDATE_LIST,
   payload,
 })
 
@@ -45,6 +51,19 @@ export const createListThunk = (payload) => async(dispatch) =>{
     const createListData = await response.json();
     dispatch(createListAction(createListData));
     return createListData;
+  }
+  return response;
+}
+
+export const updateListThunk = (payload, id) => async(dispatch) =>{
+  const response = await csrfFetch(`/api/lists/update/${id}`, {
+    method: "post",
+    body: JSON.stringify(payload),
+  });
+  if(response.ok){
+    const updateListData = await response.json();
+    dispatch(updateListAction(updateListData));
+    return updateListData;
   }
   return response;
 }
@@ -85,6 +104,10 @@ const listReducer = (state=initialState, action) =>{
     }
     case CREATE_LIST:{
       newState.createdList = action.payload;
+      return newState;
+    }
+    case UPDATE_LIST:{
+      newState.updatedList = action.payload;
       return newState;
     }
     //@contains both the list metadata + each single list items data. (key = 'listItems' to access key data)

@@ -4,7 +4,7 @@ import './ViewListPage.css'
 
 import {useDispatch ,useSelector } from 'react-redux';
 import { fetchSingleListBasedOnId } from '../../store/lists';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import ItemFormModal from '../CreateItemForm';
 
 export const ViewListPage = () => {
@@ -15,7 +15,12 @@ export const ViewListPage = () => {
   const singleListItems = useSelector(state=>state.lists.singeListItems);
   const sessionUser = useSelector((state) => state.session.user);
 
-  const [iAmTheUser, setIAmTheUser] = useState(false);
+  // const [iAmTheUser, setIAmTheUser] = useState(false);
+
+  const history = useHistory();
+  const directToEdit = ()=>{
+    history.push(`/edit-list/${singleListItems.id}`)
+  }
 
   // render these components if user owns post.
   // change to state based later
@@ -28,10 +33,12 @@ export const ViewListPage = () => {
       iAmTheUserButtonAddItem =  (
         <div className="add-item-button-from-list">
           <ItemFormModal listId={singleListItems.id}/>
+          <button className="edit-list-button"  onClick={directToEdit}>Edit List <i className="editicon fas fa-edit"></i></button>
         </div>
+
       );
       iAmTheEditButton = (
-        <div className="edit-list-item-button">
+        <div onClick={directToEdit} className="edit-list-item-button">
           <i className="fas fa-edit"></i>
         </div>
       )
@@ -89,14 +96,14 @@ export const ViewListPage = () => {
                 </div>
 
                 <div className="view-title-and-content-wrapper">
-                  <div className="view-title-and-content">
-                    {/* edit button */}
-                    {singleListItems && iAmTheEditButton}
 
-                    <div className="view-title-item"> {listItem.title}</div>
+                  {/* edit button */}
+                  {singleListItems && iAmTheEditButton}
 
-                    <div className="view-title-content"> {listItem.content}</div>
-                  </div>
+                  <div className="view-title-item"> {listItem.title}</div>
+
+                  <div className="view-title-content"> {listItem.content}</div>
+
                 </div>
 
               </div>

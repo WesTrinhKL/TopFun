@@ -97,6 +97,7 @@ router.get('/global-feed-lists', asyncHandler(async (req, res)=>{
       },
     ],
     limit: 10,
+    order:[['updatedAt', 'DESC']],
   });
   return res.json(lists);
   // returns an array of users obj, with arrays(lists key) of lists obj.
@@ -115,9 +116,10 @@ router.get('/global-feed-categories', asyncHandler(async (req, res)=>{
           model: ListItem,
           as: 'listItems',
         }
-      }
+      },
     },
     limit: 10,
+    order:[['updatedAt', 'DESC']],
   });
   return res.json(listsUnderCategory);
 }))
@@ -160,7 +162,60 @@ router.post('/create', requireAuth, validateCreateList, asyncHandler(async (req,
     userId,
   })
   return res.json(createNewList);
-}) )
+}))
+
+
+//@Update/EDIT a list
+router.post('/update/:id', requireAuth, validateCreateList, asyncHandler(async (req,res)=>{
+  const userId = req.user.id;
+  const id = parseInt(req.params.id);
+  const {
+    title,
+    coverPhotoLink,
+    description,
+    categoryName,
+  } = req.body;
+
+  // first ensure that list belongs to user.
+
+  //find existing or create new category
+  const findUserCategoryByName = await Category.findOne({
+    where: {
+      [Op.and]: [
+        {categoryType: categoryName},
+        {userId: userId}
+      ]
+    }
+  })
+  let categoryId;
+  if(findUserCategoryByName){
+    categoryId = findUserCategoryByName.id;
+  }else{
+    const newlyMadeCategory = await Category.create({
+      categoryType: categoryName,
+      userId: userId,
+    })
+    categoryId = newlyMadeCategory.id;
+  }
+  //update the list
+  const updatedList = await List.update({
+    title,
+    coverPhotoLink,
+    description,
+    categoryId,
+    userId,
+  }, {
+    where: {id},
+    returning: true,
+    plain:true,
+  })
+  return res.json(updatedList);
+}))
+
+
+
+
+
 //@-----------List Items-----------
 //@create item in list
 //send post with 'list id' param and list item

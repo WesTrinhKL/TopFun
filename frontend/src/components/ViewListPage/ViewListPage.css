@@ -7,6 +7,7 @@
   min-height: 100%;
   margin-top: 15px;
   border-radius: 5px;
+
 }
 
 .view-container-list{
@@ -76,32 +77,35 @@
   background-color: white;
   padding: 20px;
 
+
 }
 
 /* THIS IS PISSING ME OFF */
 .view-item-body-content{
   display: flex;
   justify-content: flex-start;
-  min-width: 20vh;
+  /* min-width: 20vh; */
+  width: 100%;
 }
 
-.view-title-and-content{
+.view-title-and-content-wrapper{
   display: flex;
   flex-direction: column;
   align-items: center;
   /* justify-content: space-between; */
-  width: 80vh;
+  width: 80%;
   min-width: 10vh;
   /* max-width: 40%; */
   /* border-bottom: 1px solid rgb(201, 201, 201); */
   position: relative;
 }
 
+
 /* edit */
 .edit-list-item-button{
   /* width: 10%; */
   position: absolute;
-  right: 0;
+  right: -10px;
   font-size: 25px;
   top: -10px;
   color: #8FD6E1;
@@ -114,20 +118,20 @@
 .view-title-item{
   font-weight: Bold;
   font-size: 20px;
-  margin: 0 0 2px;
-  min-width: 50vh;
+  margin: 15px 0 2px;
+  min-width: 1vh;
   padding-top: 5px;
-  padding-bottom: 15px;
+  padding-bottom: 10px;
   text-align: center;
   color:rgb(63, 63, 63);
 }
 
 .view-title-content{
   font-size: 15px;
-  margin: 5px;
-  width: 80%;
+  width: 60%;
   font-family:Arial, Helvetica, sans-serif;
   text-align: center;
+  margin-top:5px;
 }
 
 
@@ -173,6 +177,32 @@
     min-width: 100%;
   }
   .view-title-and-content{
+    min-width: 30%;
+  }
+
+  .view-list-content-wrapper{
     min-width: 80%;
+  }
+  .title-list{
+    text-align: center;
+  }
+  .edit-list-item-button{
+    margin-top: 25px;
+  }
+  .view-title-item{
+    font-size: 15px;
+    max-width: 50%;
+  }
+}
+
+@media only screen and (max-width: 800px) {
+  .view-item-body-content{
+    flex-direction: column;
+  }
+  .view-item-body-content{
+    align-items: center;
+  }
+  .edit-list-item-button{
+    margin-top: 25px;
   }
 }

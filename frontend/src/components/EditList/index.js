@@ -1,26 +1,29 @@
+import './EditList.css'
 import React,{ useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import './CreateListForm.css';
-import { createListThunk } from '../../store/lists';
+import { updateListThunk } from '../../store/lists';
 import { useHistory } from 'react-router';
+import { useParams } from 'react-router';
 
 
-
-export const CreateListForm = () => {
+export const EditList = () => {
+  let {id} = useParams();
 
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
-  // const createdListId = useSelector((state) => state.lists.createdList? state.lists.createdList.id: null);
+  const singleListItems = useSelector(state=>state.lists.singeListItems);
 
-  const [title, setTitle] = useState("");
-  const [coverPhotoLink, setCoverPhotoLink] = useState("");
-  const [description, setDescription] = useState("");
+
+  const [title, setTitle] = useState(singleListItems.title);
+  const [coverPhotoLink, setCoverPhotoLink] = useState(singleListItems.coverPhotoLink);
+  const [description, setDescription] = useState(singleListItems.description);
+  // fix this later
   const [categoryName, setCategoryName] = useState("");
   const [errors, setErrors] = useState([]);
 
   const history = useHistory();
 
-  const onFormSubmitCreateList = async (e)=>{
+  const onFormSubmitUpdateList = async (e)=>{
     e.preventDefault();
     if(!sessionUser) history.push('/')
     else{
@@ -32,21 +35,15 @@ export const CreateListForm = () => {
       }
       setErrors([]);
       // dispatch thunk to sign up
-      return dispatch(createListThunk(payload)).then((data)=>{
-        console.log("this is view list data", data);
-        history.push(`/view-list/${data.id}`);
+      return dispatch(updateListThunk(payload,id)).then((data)=>{
+        console.log("this is the updated data", data);
+        history.push(`/view-list/${id}`);
       }).catch(async (res) => {
         const data = await res.json();
         if (data && data.errors) setErrors(data.errors);
       });
     }
   }
-
-  // return dispatch(createListThunk(payload)).then(async (data)=>{
-  //   const responseData = await data.json();
-  //   console.log("after list created data returned: ", responseData);
-  //   history.push('/');
-
   const setTitleE = (e) => setTitle(e.target.value);
   const setCoverPhotoLinkE = (e) => setCoverPhotoLink(e.target.value);
   const setDescriptionE = (e) => setDescription(e.target.value);
@@ -55,8 +52,10 @@ export const CreateListForm = () => {
   return (
     <div className="create-form-wrapper">
 
-      <form className="form-container-list" onSubmit={onFormSubmitCreateList}>
-        <div className="form-item-spacing title-list"> Create List</div>
+      <form className="form-container-list" onSubmit={onFormSubmitUpdateList}>
+        <div className="form-item-spacing title-list">
+        Updating: <span className="updated-title"> {title} </span>
+        </div>
         <ul className="error-group">
             {errors.map((error, idx) => <li key={idx}>*{error}</li>)}
         </ul>
