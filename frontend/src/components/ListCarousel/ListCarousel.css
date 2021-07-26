@@ -35,9 +35,9 @@
   font-size: large;
   margin:5px;
 }
-.list-title:hover{
+.list-title-homepage:hover{
   cursor: pointer;
-  color: rgb(28, 143, 219);
+  color: rgb(96, 187, 248);
 }
 
 

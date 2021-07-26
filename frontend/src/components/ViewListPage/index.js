@@ -19,7 +19,11 @@ export const ViewListPage = () => {
 
   const history = useHistory();
   const directToEdit = ()=>{
-    history.push(`/edit-list/${singleListItems.id}`)
+    history.push(`/edit-list/${singleListItems.id}/${singleListItems}`)
+  }
+
+  const directToModalEditItem = ()=>{
+    console.log("todo")
   }
 
   // render these components if user owns post.
@@ -38,7 +42,7 @@ export const ViewListPage = () => {
 
       );
       iAmTheEditButton = (
-        <div onClick={directToEdit} className="edit-list-item-button">
+        <div onClick={directToModalEditItem} className="edit-list-item-button">
           <i className="fas fa-edit"></i>
         </div>
       )
