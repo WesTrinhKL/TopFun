@@ -12,6 +12,7 @@ import { ModalProvider } from "./context/Modal";
 // thunk and redux
 import * as sessionActions from './store/session';
 import NavbarProvider from './context/NavbarContext';
+import ScrollToTop from './components/utils/ScrollToTop';
 
 const store = configureStore();
 
@@ -30,7 +31,10 @@ function Root() {
       <ModalProvider>
         <NavbarProvider>
           <BrowserRouter>
-            <App />
+            <ScrollToTop>
+              <App />
+            </ScrollToTop>
+
           </BrowserRouter>
         </NavbarProvider>
       </ModalProvider>

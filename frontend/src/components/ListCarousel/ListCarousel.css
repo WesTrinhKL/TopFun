@@ -17,7 +17,11 @@
 
 
 .list-item-container{
+  /* max-width: 80vh; */
+}
 
+.content-container{
+  max-width: 80%;
 }
 
 
@@ -36,6 +40,7 @@
   cursor: pointer;
   color: rgb(28, 143, 219);
 }
+
 
 .list-view-button{
   display: flex;

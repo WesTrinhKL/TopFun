@@ -13,7 +13,7 @@ export const LandingPage = () => {
   const {setNavLandingStyle} = useNavbar();
   setNavLandingStyle("nav-wrapper");
   const backgrounds= [ landingbg2, landingbg3, landingbg4];
-  const [selectedBackground, setSelectedBackground] = useState(landingbg);
+  const [selectedBackground, setSelectedBackground] = useState(landingbg4);
   const [currentIterationBackground, setCurrentIterationBackground] = useState(0);
 
   const sessionUser = useSelector(state => state.session.user);

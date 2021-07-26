@@ -176,8 +176,8 @@ textarea {
   border-radius: 2px;
   margin-top: 15px;
 
-  margin-right: auto;
-  margin-left: auto;
+  /* margin-right: auto;
+  margin-left: auto; */
   color: white;
   font-size: 12px;
   font-weight: bold;
@@ -191,6 +191,30 @@ textarea {
   box-shadow: 0 4px 8px rgba(0,0,0,0.22);
   cursor: pointer;
 }
+
+.edit-list-button{
+  padding: 10px;
+  background-color: #F6AE99;
+  border-style: none;
+  border-radius: 2px;
+  margin-top: 15px;
+
+  /* margin-right: auto;
+  margin-left: auto; */
+  color: white;
+  font-size: 12px;
+  font-weight: bold;
+  max-width: 90px;
+  text-align: center;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.24);
+  transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+  margin-left: 20px;
+}
+.edit-list-button:hover{
+  box-shadow: 0 4px 8px rgba(0,0,0,0.22);
+  cursor: pointer;
+}
+
 
 /* modal close child */
 .want-to-close{

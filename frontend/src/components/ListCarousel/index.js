@@ -18,12 +18,15 @@ export const ListCarousel = (props) => {
         <div className="list-title" onClick={clickHeaderNavigate}>{props.title}</div>
         <div className="author-title">Made by: {props.userObj.username}</div>
         {/* <img className="image-cover" src={props.coverPhotoLink} alt="img" /> */}
-        {props.listItemsArray.map(listItem=>(
-          <img key={listItem.id} className="image-cover" src={listItem.imageLink} alt="img" />
-        ))}
-        <div className="list-view-button">
-          <Link to={`/view-list/${props.id}`}  className="button-style-list"href="">view full list</Link>
+        <div className="content-container">
+          {props.listItemsArray.map(listItem=>(
+            <img key={listItem.id} className="image-cover" src={listItem.imageLink} alt="img" />
+          ))}
+          <div className="list-view-button">
+            <Link to={`/view-list/${props.id}`}  className="button-style-list"href="">view full list</Link>
+          </div>
         </div>
+
 
       </div>
 
