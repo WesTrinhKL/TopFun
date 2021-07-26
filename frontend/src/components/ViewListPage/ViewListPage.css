@@ -1,5 +1,5 @@
 .view-list-content-wrapper{
-  max-width: 60%;
+  width: 60%;
   margin: auto;
   display: flex;
   flex-direction: column;
@@ -28,10 +28,14 @@
   font-weight: bold;
 }
 
+/* inner content */
+
+
 .title-list{
   font-weight: Bold;
   font-size: 30px;
   margin: 12px 0 5px;
+  max-width: 80%;
 }
 
 .title-author {
@@ -74,6 +78,7 @@
 
 }
 
+/* THIS IS PISSING ME OFF */
 .view-item-body-content{
   display: flex;
   justify-content: flex-start;
@@ -85,11 +90,26 @@
   flex-direction: column;
   align-items: center;
   /* justify-content: space-between; */
-  min-width: 70vh;
+  width: 80vh;
+  min-width: 10vh;
   /* max-width: 40%; */
   /* border-bottom: 1px solid rgb(201, 201, 201); */
+  position: relative;
 }
 
+/* edit */
+.edit-list-item-button{
+  /* width: 10%; */
+  position: absolute;
+  right: 0;
+  font-size: 25px;
+  top: -10px;
+  color: #8FD6E1;
+}
+.edit-list-item-button:hover{
+  cursor: pointer;
+  color: #257885;
+}
 
 .view-title-item{
   font-weight: Bold;

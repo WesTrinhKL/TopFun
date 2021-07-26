@@ -17,16 +17,22 @@ export const ViewListPage = () => {
 
   const [iAmTheUser, setIAmTheUser] = useState(false);
 
-
+  // render these components if user owns post.
+  // change to state based later
   let currentUserId
   let iAmTheUserButtonAddItem;
-
+  let iAmTheEditButton;
   if(singleListItems && sessionUser){
     currentUserId = sessionUser.id;
     if(currentUserId === singleListItems.userId) {
       iAmTheUserButtonAddItem =  (
         <div className="add-item-button-from-list">
           <ItemFormModal listId={singleListItems.id}/>
+        </div>
+      );
+      iAmTheEditButton = (
+        <div className="edit-list-item-button">
+          <i className="fas fa-edit"></i>
         </div>
       )
     }
@@ -44,22 +50,6 @@ export const ViewListPage = () => {
   console.log("reversed" , singleListItemsReversed)
 
 
-  // let title;
-  // if(iAmTheUser){
-  //   title = (
-  //     <>
-  //       Viewing Your List!
-  //     </>
-  //   )
-  // }
-  // else if (singleListItems) {
-  //   title = (
-  //     <>
-  //       Viewing List!
-  //     </>
-  //   )
-  // }
-
   //thunk to fetch data based on id
   //use selector to grab data from store
   //iterate through data and pass it as prop to SingleListItem component
@@ -73,10 +63,10 @@ export const ViewListPage = () => {
         </div> */}
 
         <div className="title-list alt-two">
-          <h1>List Title</h1>
+          <h1>{singleListItems.title}</h1>
         </div>
         <div className="title-author">
-         author goes here
+         By: {singleListItems.user.username}
         </div>
 
         {singleListItems && iAmTheUserButtonAddItem}
@@ -98,10 +88,17 @@ export const ViewListPage = () => {
                   </div>
                 </div>
 
-                <div className="view-title-and-content">
-                  <div className="view-title-item"> {listItem.title}</div>
-                  <div className="view-title-content"> {listItem.content}</div>
+                <div className="view-title-and-content-wrapper">
+                  <div className="view-title-and-content">
+                    {/* edit button */}
+                    {singleListItems && iAmTheEditButton}
+
+                    <div className="view-title-item"> {listItem.title}</div>
+
+                    <div className="view-title-content"> {listItem.content}</div>
+                  </div>
                 </div>
+
               </div>
 
 
