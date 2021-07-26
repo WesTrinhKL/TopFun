@@ -71,6 +71,7 @@ export const ViewListPage = () => {
         {/* <div className="title-list">
           {singleListItems && title}
         </div> */}
+
         <div className="title-list alt-two">
           <h1>List Title</h1>
         </div>
@@ -81,20 +82,28 @@ export const ViewListPage = () => {
         {singleListItems && iAmTheUserButtonAddItem}
 
         <div className="view-list-content-wrapper">
+          <div className="view-menu-dropdown">
+            <div>Sort By</div>
+            <i className="fas fa-caret-down d-icon"></i>
+          </div>
 
           {singleListItems && singleListItemsReversed.map(listItem=>(
             <div className="view-item-wrapper">
               <div className="view-item-body-content">
-                <img className="view-image-cover" src={listItem.imageLink} alt="img" />
+                <div>
+                  <img className="view-image-cover" src={listItem.imageLink} alt="img" />
+                  <div className="view-external-link">
+                  <a href="" className="view-external-link-button"> View Link Here <i className="view-external-link-icon fas fa-external-link-alt"></i></a>
+
+                  </div>
+                </div>
+
                 <div className="view-title-and-content">
-                  <div> {listItem.title}</div>
-                  <div> {listItem.content}</div>
+                  <div className="view-title-item"> {listItem.title}</div>
+                  <div className="view-title-content"> {listItem.content}</div>
                 </div>
               </div>
-              <div className="view-external-link">
-                <a href="" className="view-external-link-button"> View Link Here <i className="view-external-link-icon fas fa-external-link-alt"></i></a>
 
-              </div>
 
 
             </div>
