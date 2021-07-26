@@ -17,7 +17,7 @@ export const HomePage = () => {
   useEffect(()=>{
     dispatch(fetchHomeFeed());
   },[dispatch])
-  if(homepageData) console.log("homepage data", homepageData);
+  // if(homepageData) console.log("homepage data", homepageData);
 
   return (
     <div className="homepage-content-container">

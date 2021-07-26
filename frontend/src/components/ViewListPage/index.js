@@ -23,7 +23,7 @@ export const ViewListPage = () => {
   }
 
   const directToModalEditItem = ()=>{
-    console.log("todo")
+    // console.log("todo")
   }
 
   // render these components if user owns post.
@@ -58,7 +58,7 @@ export const ViewListPage = () => {
   }
 
   let singleListItemsReversed = [...singleListItems.listItems].reverse();
-  console.log("reversed" , singleListItemsReversed)
+  // console.log("reversed" , singleListItemsReversed)
 
 
   //thunk to fetch data based on id

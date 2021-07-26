@@ -33,7 +33,7 @@ export const ItemForm = ({listId}) => {
       }
       setErrors([]);
       return dispatch(createItemThunk(payload,listId)).then((data)=>{
-        console.log("item creation returned data: ", data);
+        // console.log("item creation returned data: ", data);
         history.push(`/view-list/${listId}`);
         window.location.reload();
       }).catch(async (res) =>{
@@ -53,7 +53,7 @@ export const ItemForm = ({listId}) => {
   const next = ()=>{
     switch (currentOption) {
       case 1:{
-        console.log("this is the title", title);
+        // console.log("this is the title", title);
         if(title.length > 0) {
           setCurrentOption(currentOption+1);
           setErrors([]);
@@ -69,9 +69,9 @@ export const ItemForm = ({listId}) => {
         break;
       }
       case 3:{
-        console.log("current hit: ", currentOption);
+        // console.log("current hit: ", currentOption);
         if(content.length > 1) {
-          console.log("current content: ", content)
+          // console.log("current content: ", content)
           setCurrentOption(currentOption+1);
           setErrors([]);
         }

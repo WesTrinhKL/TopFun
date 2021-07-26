@@ -40,7 +40,7 @@ export const EditList = () => {
       setErrors([]);
       // dispatch thunk to sign up
       return dispatch(updateListThunk(payload,id)).then((data)=>{
-        console.log("this is the updated data", data);
+        // console.log("this is the updated data", data);
         history.push(`/view-list/${id}`);
       }).catch(async (res) => {
         const data = await res.json();

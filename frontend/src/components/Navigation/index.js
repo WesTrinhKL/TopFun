@@ -32,7 +32,7 @@ function Navigation({ isLoaded }){
     );
   }
 
-  console.log("this is the pathname", window.location.pathname);
+  // console.log("this is the pathname", window.location.pathname);
 
 
 

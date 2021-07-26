@@ -5,7 +5,7 @@ import { useHistory } from 'react-router'
 export const CreateListButton = ({sessionUser}) => {
   const history= useHistory();
   const openCreateList = () =>{
-    console.log("button is working");
+    // console.log("button is working");
     history.push('/create-list')
     return;
   }
