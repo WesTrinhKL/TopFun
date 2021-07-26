@@ -23,6 +23,10 @@ export const EditList = () => {
 
   const history = useHistory();
 
+  const redirectCancel = ()=>{
+    history.push(`/view-list/${id}`)
+  }
+
   const onFormSubmitUpdateList = async (e)=>{
     e.preventDefault();
     if(!sessionUser) history.push('/')
@@ -111,9 +115,13 @@ export const EditList = () => {
             type="text" />
         </div>
 
-        <div className="input-wrapper">
-          <button className="submit-list-button" type="submit">Create Your List</button>
+        <div className="input-wrapper-buttons">
+          <div className="cancel-list-button" onClick={redirectCancel}>
+            <div className="cancel">Cancel </div>
+          </div>
+          <button className="submit-list-button" type="submit">Update Your List</button>
         </div>
+
 
 
       </form>
