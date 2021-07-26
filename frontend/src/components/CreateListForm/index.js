@@ -33,7 +33,7 @@ export const CreateListForm = () => {
       setErrors([]);
       // dispatch thunk to sign up
       return dispatch(createListThunk(payload)).then((data)=>{
-        console.log("this is view list data", data);
+        // console.log("this is view list data", data);
         history.push(`/view-list/${data.id}`);
       }).catch(async (res) => {
         const data = await res.json();

@@ -243,7 +243,7 @@ router.post('/listId/:id/add/item', requireAuth, validateListItem, asyncHandler(
 
     //ensure that currentRank is unique later.
     const listId = paramListId;
-    console.log("value of list ID:",listId)
+    // console.log("value of list ID:",listId)
     const createListItem = await ListItem.create({
       title,
       currentRank,

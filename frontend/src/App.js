@@ -18,7 +18,7 @@ function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
   useEffect(() => {
-    console.log("state before attempting to restore user: ", isLoaded);
+    // console.log("state before attempting to restore user: ", isLoaded);
     dispatch(sessionActions.restoreUser()).then(() => setIsLoaded(true)); //only after attempting to restore user is the isLoaded set to true  (after attempting to render).
   }, [dispatch]);
 

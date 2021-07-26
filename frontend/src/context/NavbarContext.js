@@ -7,7 +7,7 @@ export const NavbarContext = createContext();
 
 //use state and provider
 export default function NavbarProvider({ children }) {
-  console.log("context updated");
+  // console.log("context updated");
   const [navbarStyle, setNavLandingStyle] = useState("nav-wrapper-not-landing");
 
   return (
