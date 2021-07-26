@@ -5,7 +5,6 @@
   min-height: 175px;
   margin: 5px;
   border-radius: 8px;
-
 }
 
 .full-item-wrapper{
@@ -20,17 +19,17 @@
   /* max-width: 80vh; */
 }
 
-.content-container{
-  max-width: 80%;
+.content-container-homepage{
+  max-width: 90%;
 }
 
 
-.author-title{
+.author-title-homepage{
   font-size: 11px;
   margin: 2px 5px;
 }
 
-.list-title{
+.list-title-homepage{
   font-weight: bold;
   font-family:sans-serif;
   font-size: large;

@@ -80,16 +80,20 @@ export const ViewListPage = () => {
 
         {singleListItems && iAmTheUserButtonAddItem}
 
-        <div className="list-wrapper">
+        <div className="view-list-content-wrapper">
 
           {singleListItems && singleListItemsReversed.map(listItem=>(
-            <div className="item-wrapper">
-              <div className="item-body-content">
-                <img className="image-cover" src={listItem.imageLink} alt="img" />
-                <div className="title-and-content">
+            <div className="view-item-wrapper">
+              <div className="view-item-body-content">
+                <img className="view-image-cover" src={listItem.imageLink} alt="img" />
+                <div className="view-title-and-content">
                   <div> {listItem.title}</div>
                   <div> {listItem.content}</div>
                 </div>
+              </div>
+              <div className="view-external-link">
+                <a href="" className="view-external-link-button"> View Link Here <i className="view-external-link-icon fas fa-external-link-alt"></i></a>
+
               </div>
 
 
