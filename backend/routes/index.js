@@ -3,12 +3,12 @@ const express = require('express');
 const router = express.Router();
 
 //@/testing routes
-const testingRouter = require('./testing');
-router.use('/testing',testingRouter )
-router.get('/hello/world', function(req, res) {
-  res.cookie('XSRF-TOKEN', req.csrfToken());
-  res.send('Hello World!');
-});
+// const testingRouter = require('./testing');
+// router.use('/testing',testingRouter )
+// router.get('/hello/world', function(req, res) {
+//   res.cookie('XSRF-TOKEN', req.csrfToken());
+//   res.send('Hello World!');
+// });
 
 
 //@/api routes from api/index.js

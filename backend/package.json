@@ -5,9 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "sequelize": "sequelize",
+    "sequelize": "npm run sequelize",
     "sequelize-cli": "sequelize-cli",
-    "start": "per-env",
+    "start": "npm start",
     "start:development": "nodemon -r dotenv/config ./bin/www",
     "start:production": "node ./bin/www"
   },
