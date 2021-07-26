@@ -45,7 +45,7 @@ function ProfileButton({ user }) {
 
             <div className="profile-username-button">
               <i className="fas fa-user profile-icon"></i>
-              <div> {user.username} </div>
+              <div className="username-profile-text"> {user.username} </div>
             </div>
           </li>
           {/* <li>{user.email}</li> */}

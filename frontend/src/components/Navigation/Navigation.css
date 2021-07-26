@@ -40,6 +40,7 @@
   display:flex;
   position: sticky;
   top: 0;
+  /* font-weight: bold; */
 }
 
 .nav-container{
@@ -83,7 +84,12 @@
   align-items: center;
   text-decoration: none;
   color: white;
+  font-weight: bold;
 
+}
+
+.fun-logo{
+  /* color: #bfd7f8; */
 }
 
 .logo{

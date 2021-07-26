@@ -79,7 +79,7 @@ export const CreateListForm = () => {
             Cover Photo:
           </label>
           <div className="cover-photo-preview">
-            <img src={coverPhotoLink} alt="Can't Find Image" />
+            <img src={coverPhotoLink || `https://www.contentviewspro.com/wp-content/uploads/2017/07/default_image.png`} alt="Can't Find Image" />
           </div>
           <input className="input-box-style"
               placeholder="add a link a photo..."

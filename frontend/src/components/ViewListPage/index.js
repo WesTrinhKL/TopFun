@@ -17,13 +17,15 @@ export const ViewListPage = () => {
 
   const [iAmTheUser, setIAmTheUser] = useState(false);
 
-  let currentUserId = sessionUser.id;
 
+  let currentUserId
   let iAmTheUserButtonAddItem;
+
   if(singleListItems && sessionUser){
+    currentUserId = sessionUser.id;
     if(currentUserId === singleListItems.userId) {
       iAmTheUserButtonAddItem =  (
-        <div className="add-item-button">
+        <div className="add-item-button-from-list">
           <ItemFormModal listId={singleListItems.id}/>
         </div>
       )
@@ -70,7 +72,10 @@ export const ViewListPage = () => {
           {singleListItems && title}
         </div> */}
         <div className="title-list">
-          List Items Go Here
+          List Items title Go Here
+        </div>
+        <div className="title-author">
+         author goes here
         </div>
         <div>
             {singleListItems && iAmTheUserButtonAddItem}

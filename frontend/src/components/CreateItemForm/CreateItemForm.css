@@ -169,6 +169,29 @@ textarea {
   background-color: #41d67a;
 }
 
+.add-item-button{
+  padding: 10px;
+  background-color: rgb(83, 221, 191);
+  border-style: none;
+  border-radius: 2px;
+  margin-top: 15px;
+
+  margin-right: auto;
+  margin-left: auto;
+  color: white;
+  font-size: 12px;
+  font-weight: bold;
+  max-width: 90px;
+  text-align: center;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.24);
+  transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+}
+
+.add-item-button:hover{
+  box-shadow: 0 4px 8px rgba(0,0,0,0.22);
+  cursor: pointer;
+}
+
 /* modal close child */
 .want-to-close{
   padding: 20px;

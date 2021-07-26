@@ -10,7 +10,7 @@ function ItemFormModal({listId}) {
 
   return (
     <>
-      <button onClick={() => setShowModal(true)}>Add An Item</button>
+      <button className="add-item-button"  onClick={() => setShowModal(true)}>Add an item</button>
       {verifyClose && (
         <ModalVerify  offVerify={() => setVerifyClose(false)} onClose={() => setShowModal(false)}>
           <div className="want-to-close">Are you sure you want to close?</div>

@@ -8,9 +8,9 @@ body{
   margin: 25px auto;
   display: grid;
   grid-template-areas:
-  "lists people"
-  "lists explore"
-  "lists footer";
+  "lists lists"
+  "lists lists"
+  "lists lists";
   grid-template-columns: 4fr 1fr;
   grid-template-rows: auto;
   gap: 15px;
@@ -45,6 +45,7 @@ body{
   flex-direction: column;
   justify-content: space-between;
   height: 80%;
+
 }
 
 

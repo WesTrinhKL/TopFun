@@ -1,24 +1,32 @@
 import  React , {useRef, useState} from 'react'
-import { Link } from 'react-router-dom';
+import { Link, useHistory} from 'react-router-dom';
 
 
 import './ListCarousel.css';
 
 
 export const ListCarousel = (props) => {
+  const history=useHistory();
+  const clickHeaderNavigate = () =>{
+    history.push(`/view-list/${props.id}`)
+  }
 
 
   return (
     <div className="full-item-wrapper">
       <div className="list-item-container">
-        <div className="list-title">{props.title}</div>
+        <div className="list-title" onClick={clickHeaderNavigate}>{props.title}</div>
         <div className="author-title">Made by: {props.userObj.username}</div>
         {/* <img className="image-cover" src={props.coverPhotoLink} alt="img" /> */}
         {props.listItemsArray.map(listItem=>(
           <img key={listItem.id} className="image-cover" src={listItem.imageLink} alt="img" />
         ))}
+        <div className="list-view-button">
+          <Link to={`/view-list/${props.id}`}  className="button-style-list"href="">view full list</Link>
+        </div>
+
       </div>
-      <Link to={`/view-list/${props.id}`} className="list-view-button" href="">view full list</Link>
+
     </div>
 
 

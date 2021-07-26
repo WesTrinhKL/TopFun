@@ -34,7 +34,7 @@ export const HomePage = () => {
         </div>
       </div>
 
-      <div className="grid-item-people" >
+      {/* <div className="grid-item-people" >
         <div>People With Similar Interests</div>
       </div>
       <div className="grid-item-explore" >
@@ -42,7 +42,7 @@ export const HomePage = () => {
       </div>
       <div className="grid-item-footer" >
         <div>Footer </div>
-      </div>
+      </div> */}
     </div>
   )
 }

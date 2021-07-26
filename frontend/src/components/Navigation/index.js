@@ -42,8 +42,8 @@ function Navigation({ isLoaded }){
       <div className={navbarStyle}>
         <div className="nav-container">
           <NavLink className="nav-container__home" exact to="/">
-            <img className="logo" src={purbluelogoimg} alt="sd" />
-            <span>topfun</span>
+            {/* <img className="logo" src={purbluelogoimg} alt="sd" /> */}
+            top <span className="fun-logo">fun</span>
 
           </NavLink>
           <div className="nav-container__tabs">
