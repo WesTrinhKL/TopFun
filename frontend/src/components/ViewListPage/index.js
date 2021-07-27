@@ -1,10 +1,10 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect} from 'react';
 import { useParams } from 'react-router';
 import './ViewListPage.css'
 
 import {useDispatch ,useSelector } from 'react-redux';
 import { fetchSingleListBasedOnId } from '../../store/lists';
-import { Link, useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import ItemFormModal from '../CreateItemForm';
 
 export const ViewListPage = () => {
@@ -51,7 +51,7 @@ export const ViewListPage = () => {
 
   useEffect(()=>{
     dispatch(fetchSingleListBasedOnId(id));
-  },[dispatch])
+  },[dispatch,id])
 
   if (!singleListItems) {
     return null;
@@ -94,7 +94,7 @@ export const ViewListPage = () => {
                 <div>
                   <img className="view-image-cover" src={listItem.imageLink} alt="img" />
                   <div className="view-external-link">
-                  <a href="" className="view-external-link-button"> View Link Here <i className="view-external-link-icon fas fa-external-link-alt"></i></a>
+                  <a href="twitter.com" className="view-external-link-button"> View Link Here <i className="view-external-link-icon fas fa-external-link-alt"></i></a>
 
                   </div>
                 </div>

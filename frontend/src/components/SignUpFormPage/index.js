@@ -4,9 +4,8 @@ import { Redirect } from "react-router-dom";
 import * as sessionActions from "../../store/session";
 import { useNavbar } from '../../context/NavbarContext';
 import './SignUpFormPage.css'
-import { Link } from 'react-router-dom';
 import signup from '../../images/signup.jpg'
-import LoginFormModal from "../LoginFormModal";
+
 
 function SignupFormPage() {
   const {setNavLandingStyle} = useNavbar();

@@ -1,10 +1,7 @@
 import React, {useState} from 'react';
 import { loginUser } from "../../store/session";
-import {useDispatch, useSelector} from 'react-redux';
-import {Redirect, useHistory} from 'react-router-dom';
-import { useNavbar } from '../../context/NavbarContext';
-import landingbg from '../../images/landingbg.jpg'
-import { Link } from 'react-router-dom';
+import {useDispatch} from 'react-redux';
+
 
 
 import './LoginForm.css';

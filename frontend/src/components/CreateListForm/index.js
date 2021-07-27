@@ -1,4 +1,4 @@
-import React,{ useState, useEffect } from 'react';
+import React,{ useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import './CreateListForm.css';
 import { createListThunk } from '../../store/lists';
@@ -79,7 +79,7 @@ export const CreateListForm = () => {
             Cover Photo:
           </label>
           <div className="cover-photo-preview">
-            <img src={coverPhotoLink || `https://www.contentviewspro.com/wp-content/uploads/2017/07/default_image.png`} alt="Can't Find Image" />
+            <img src={coverPhotoLink || `https://www.contentviewspro.com/wp-content/uploads/2017/07/default_image.png`} alt="Can't Find" />
           </div>
           <input className="input-box-style"
               placeholder="add a link a photo..."
