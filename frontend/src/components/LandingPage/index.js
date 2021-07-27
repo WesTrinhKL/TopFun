@@ -1,6 +1,5 @@
 import React, {useState, useEffect} from 'react'
 import './LandingPage.css'
-import landingbg from '../../images/landingbg.jpg'
 import landingbg2 from '../../images/landingbg2.jpg'
 import landingbg3 from '../../images/signup.jpg'
 import landingbg4 from '../../images/doggo2.jfif'
@@ -12,7 +11,7 @@ import {Redirect} from 'react-router-dom';
 export const LandingPage = () => {
   const {setNavLandingStyle} = useNavbar();
   setNavLandingStyle("nav-wrapper");
-  const backgrounds= [ landingbg2, landingbg3, landingbg4];
+
   const [selectedBackground, setSelectedBackground] = useState(landingbg4);
   const [currentIterationBackground, setCurrentIterationBackground] = useState(0);
 
@@ -20,6 +19,7 @@ export const LandingPage = () => {
 
 
   useEffect(()=>{
+    let backgrounds= [ landingbg2, landingbg3, landingbg4];
     setTimeout(function(){
       // console.log("Hello");
       setSelectedBackground(backgrounds[currentIterationBackground]);
@@ -28,7 +28,7 @@ export const LandingPage = () => {
         setCurrentIterationBackground(currentIterationBackground+1);
       }
     }, 7000);
-  },[currentIterationBackground, backgrounds])
+  },[currentIterationBackground])
 
   if(sessionUser) return (
     <Redirect to='/HomePage'/>
@@ -48,6 +48,17 @@ export const LandingPage = () => {
         <Link className="join-button" to="/signup">Join for free</Link>
 
       </div>
+      <div className="plug">
+        <div className="plug-content">
+          <i className="plug-icon fab fa-github-alt"></i>
+            <div className="plug-wrapper">
+            <div className="plug-made-by">Made By: </div>
+              <a className="plug-link" target="_blank" rel="noopener noreferrer" href="https://github.com/WesTrinhKL/TopFun">Wes Trinh <i className="fas fa-external-link-alt"></i></a>
+          </div>
+        </div>
+
+      </div>
+
     </>
   )
 }

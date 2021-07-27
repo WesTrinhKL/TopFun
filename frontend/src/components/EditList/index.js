@@ -1,5 +1,5 @@
 import './EditList.css'
-import React,{ useState, useEffect } from 'react';
+import React,{ useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { updateListThunk } from '../../store/lists';
 import { useHistory } from 'react-router';
@@ -82,7 +82,7 @@ export const EditList = () => {
             Cover Photo:
           </label>
           <div className="cover-photo-preview">
-            <img src={coverPhotoLink || `https://www.contentviewspro.com/wp-content/uploads/2017/07/default_image.png`} alt="Can't Find Image" />
+            <img src={coverPhotoLink || `https://www.contentviewspro.com/wp-content/uploads/2017/07/default_image.png`} alt="Can't Find" />
           </div>
           <input className="input-box-style"
               placeholder="add a link a photo..."

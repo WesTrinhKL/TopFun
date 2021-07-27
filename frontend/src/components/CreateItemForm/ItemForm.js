@@ -1,4 +1,4 @@
-import React,{ useState, useEffect } from 'react';
+import React,{ useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import './CreateItemForm.css';
 import { createItemThunk } from '../../store/lists';
@@ -11,7 +11,7 @@ export const ItemForm = ({listId}) => {
   const dispatch = useDispatch();
   const history = useHistory();
   const sessionUser = useSelector((state) => state.session.user);
-  const singleListItems = useSelector((state) => state.lists.singleListItems);
+  // const singleListItems = useSelector((state) => state.lists.singleListItems);
 
   const [title, setTitle] = useState("");
   const [imageLink, setimageLink] = useState("");
@@ -120,7 +120,7 @@ export const ItemForm = ({listId}) => {
         Image Link(Optional):
       </label>
       <div className="cover-photo-preview">
-        <img src={imageLink || `https://www.contentviewspro.com/wp-content/uploads/2017/07/default_image.png`} alt={`image can't be found`} />
+        <img src={imageLink || `https://www.contentviewspro.com/wp-content/uploads/2017/07/default_image.png`} alt={`can't be found`} />
       </div>
       <input className="input-box-style"
           placeholder="add a link a photo..."

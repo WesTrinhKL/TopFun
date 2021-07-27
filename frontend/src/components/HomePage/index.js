@@ -1,9 +1,7 @@
 import React,  { useEffect } from 'react'
 import './HomePage.css'
 import { useNavbar } from '../../context/NavbarContext'
-import { Link} from 'react-router-dom';
 import {useDispatch, useSelector} from 'react-redux';
-import {Redirect} from 'react-router-dom';
 import { fetchHomeFeed } from '../../store/lists';
 import { ListCarousel } from '../ListCarousel';
 
