@@ -18,6 +18,10 @@ app.use(morgan('dev'));
 app.use(cookieParser());
 app.use(express.json());
 
+app.get('/helloworld', (req, res) => {
+  res.send('Hello World!')
+})
+
 if (!isProduction) {// Security Middleware
   // enable cors only in development
   app.use(cors());
