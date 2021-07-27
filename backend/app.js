@@ -25,10 +25,6 @@ if (!isProduction) {// Security Middleware
 app.use(helmet({ // helmet helps set a variety of headers to better secure your app
   contentSecurityPolicy: false
 }));
-
-//@use routes
-app.use(routes); // Connect all the routes
-
 app.use(// Set the _csrf token and create req.csrfToken method
   csurf({
     cookie: {
@@ -39,7 +35,8 @@ app.use(// Set the _csrf token and create req.csrfToken method
   })
 );
 
-
+//@use routes
+app.use(routes); // Connect all the routes
 
 
 //@error handlers
