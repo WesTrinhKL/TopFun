@@ -22,6 +22,7 @@ const LoginForm = () => {
   // )
 
 
+
   const handleSubmit = async (e) =>{
     e.preventDefault();
     setErrors([]);
@@ -31,6 +32,12 @@ const LoginForm = () => {
         // console.log("error res", data);
         if (data && data.errors) setErrors(data.errors);
       });
+  }
+
+  const handleDemo = ()=>{
+    setCredential('FakeUser1');
+    setPassword('password');
+
   }
 
   return (
@@ -78,9 +85,12 @@ const LoginForm = () => {
         <button className="signin-button" type="submit">
           Log In
         </button>
-        <button className="redirect-signup">
+        <div className="redirect-signup">
           <span>Not a member yet? </span>
           <a href="/signup">Sign up here!</a>
+        </div>
+        <button onClick={handleDemo} type="submit" className="demo-button">
+          Try Demo!
         </button>
       </form>
 

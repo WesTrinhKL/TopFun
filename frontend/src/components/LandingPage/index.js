@@ -20,7 +20,7 @@ export const LandingPage = () => {
 
   useEffect(()=>{
     let backgrounds= [ landingbg2, landingbg3, landingbg4];
-    setTimeout(function(){
+    let changeBackgroundInterval = setTimeout(function(){
       // console.log("Hello");
       setSelectedBackground(backgrounds[currentIterationBackground]);
       if(currentIterationBackground === backgrounds.length-1) setCurrentIterationBackground(0);
@@ -28,6 +28,9 @@ export const LandingPage = () => {
         setCurrentIterationBackground(currentIterationBackground+1);
       }
     }, 7000);
+    return () => {
+      clearTimeout(changeBackgroundInterval);
+    };
   },[currentIterationBackground])
 
   if(sessionUser) return (

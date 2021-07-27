@@ -7,14 +7,15 @@ import { ListCarousel } from '../ListCarousel';
 
 export const HomePage = () => {
   const {setNavLandingStyle} = useNavbar();
-  setNavLandingStyle("nav-wrapper-not-landing");
+
 
   const dispatch = useDispatch();
   const homepageData = useSelector(state => state.lists.homepageFeedGlobal); //homepageData = array of list obj w/ {users.username, listItemsArray}
 
   useEffect(()=>{
     dispatch(fetchHomeFeed());
-  },[dispatch])
+    setNavLandingStyle("nav-wrapper-not-landing");
+  },[dispatch, setNavLandingStyle])
   // if(homepageData) console.log("homepage data", homepageData);
 
   return (
