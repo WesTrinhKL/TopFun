@@ -3,10 +3,11 @@ import { Modal } from '../../context/Modal';
 import { ModalVerify } from '../../context/Modal';
 import { EditItemForm } from './EditItemForm';
 
-function EditItemFormModal({listId}, {listItemDetails}) {
+function EditItemFormModal({listId, listItemDetails}) {
   const [showModal, setShowModal] = useState(false);
   const [verifyClose, setVerifyClose] = useState(false);
 
+  console.log("this is the list item details: ", listItemDetails.id)
 
   return (
     <>

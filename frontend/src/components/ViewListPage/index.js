@@ -10,7 +10,6 @@ import EditItemFormModal from '../EditItemForm';
 
 export const ViewListPage = () => {
   let {id} = useParams();
-  console.log("this is the id value: ", id)
   const dispatch = useDispatch();
 
   const singleListItems = useSelector(state=>state.lists.singeListItems);
@@ -31,23 +30,27 @@ export const ViewListPage = () => {
   // change to state based later
   let currentUserId
   let iAmTheUserButtonAddItem;
-  let iAmTheEditButton;
+  let iAmTheEditButton = ()=>{};
   if(singleListItems && sessionUser){ //if user owns this list
     currentUserId = sessionUser.id;
     if(currentUserId === singleListItems.userId) {
-      iAmTheUserButtonAddItem =  (
+      iAmTheUserButtonAddItem =  ( //set add item button
         <div className="add-item-button-from-list">
           <ItemFormModal listId={singleListItems.id}/>
           <button className="edit-list-button"  onClick={directToEdit}>Edit List <i className="editicon fas fa-edit"></i></button>
         </div>
 
       );
-      console.log("this is the list item", singleListItems.listItems)
-      iAmTheEditButton = (
-        <div className="edit-list-item-button">
-          <EditItemFormModal listId={singleListItems.id} listItemDetails={singleListItems.listItems} />
-        </div>
-      )
+
+      iAmTheEditButton = (listItemDetails)=>{ // set list item button
+        // console.log("this is a single list item: ", listItem)
+        return (<div className="edit-list-item-button" >
+        {/* here we pass the single list item data to the edit modal */}
+          <EditItemFormModal key={listItemDetails.id} listId={singleListItems.id} listItemDetails={listItemDetails} />
+        </div>)
+      }
+
+
     }
   }
 
@@ -59,8 +62,7 @@ export const ViewListPage = () => {
     return null;
   }
 
-  let singleListItemsReversed = [...singleListItems.listItems].reverse();
-  // console.log("reversed" , singleListItemsReversed)
+  // let singleListItemsReversed = [...singleListItems.listItems].reverse(); //reversing list test
 
 
   //thunk to fetch data based on id
@@ -90,7 +92,7 @@ export const ViewListPage = () => {
             <i className="fas fa-caret-down d-icon"></i>
           </div>
 
-          {singleListItems && singleListItemsReversed.map(listItem=>(
+          {singleListItems && singleListItems.listItems.map((listItem)=>(
             <div className="view-item-wrapper">
               <div className="view-item-body-content">
                 <div>
@@ -104,7 +106,7 @@ export const ViewListPage = () => {
                 <div className="view-title-and-content-wrapper">
 
                   {/* edit button */}
-                  {singleListItems && iAmTheEditButton}
+                  {singleListItems && iAmTheEditButton(listItem)}
 
                   <div className="view-title-item"> {listItem.title}</div>
 
