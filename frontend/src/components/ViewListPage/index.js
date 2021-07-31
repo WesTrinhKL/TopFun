@@ -6,6 +6,7 @@ import {useDispatch ,useSelector } from 'react-redux';
 import { fetchSingleListBasedOnId } from '../../store/lists';
 import { useHistory } from 'react-router-dom';
 import ItemFormModal from '../CreateItemForm';
+import EditItemFormModal from '../EditItemForm';
 
 export const ViewListPage = () => {
   let {id} = useParams();
@@ -18,7 +19,7 @@ export const ViewListPage = () => {
   // const [iAmTheUser, setIAmTheUser] = useState(false);
 
   const history = useHistory();
-  const directToEdit = ()=>{
+  const directToEdit = ()=>{ //directs the user to the edit screen for the list
     history.push(`/edit-list/${singleListItems.id}/${singleListItems}`)
   }
 
@@ -31,7 +32,7 @@ export const ViewListPage = () => {
   let currentUserId
   let iAmTheUserButtonAddItem;
   let iAmTheEditButton;
-  if(singleListItems && sessionUser){
+  if(singleListItems && sessionUser){ //if user owns this list
     currentUserId = sessionUser.id;
     if(currentUserId === singleListItems.userId) {
       iAmTheUserButtonAddItem =  (
@@ -41,9 +42,10 @@ export const ViewListPage = () => {
         </div>
 
       );
+      console.log("this is the list item", singleListItems.listItems)
       iAmTheEditButton = (
-        <div onClick={directToModalEditItem} className="edit-list-item-button">
-          <i className="fas fa-edit"></i>
+        <div className="edit-list-item-button">
+          <EditItemFormModal listId={singleListItems.id} listItemDetails={singleListItems.listItems} />
         </div>
       )
     }
