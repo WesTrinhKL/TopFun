@@ -232,7 +232,7 @@ router.post('/listId/:id/add/item', requireAuth, validateListItem, asyncHandler(
       ]
     }
   })
-  if(listFoundVerified){ //once validated
+  if(listFoundVerified && listFoundVerified.userId == usedId){ //once validated
     // gather data from form and add list item
     const {
       title,
@@ -262,11 +262,8 @@ router.post('/listId/:id/add/item', requireAuth, validateListItem, asyncHandler(
   }
 }))
 
-
-
-
 router.post('/listId/:id/update/item/:itemId', requireAuth, validateListItem, asyncHandler(async(req,res)=>{
-  //very list id is accessible by user
+  //verify list id is accessible by user
   const paramListId = req.params.id;
   const userId = req.user.id;
   const listFoundVerified = await List.findOne({
@@ -277,7 +274,7 @@ router.post('/listId/:id/update/item/:itemId', requireAuth, validateListItem, as
       ]
     }
   })
-  if(listFoundVerified){ //once validated
+  if(listFoundVerified && listFoundVerified.userId == usedId){ //once validated
     // gather data from form and add list item
     const itemId = req.params.itemId;
     const listItemToUpdate = await ListItem.findByPk(itemId)
