@@ -45,10 +45,10 @@ export const EditItemForm = ({listId, listItemDetails}) => {
         currentRank,
       }
       setErrors([]);
-      return dispatch(updateItemThunk(payload,listId)).then((data)=>{
-        // console.log("item creation returned data: ", data);
+      return dispatch(updateItemThunk(payload,listId,listItemDetails.id)).then((data)=>{
+
         history.push(`/view-list/${listId}`);
-        window.location.reload();
+        // window.location.reload();
       }).catch(async (res) =>{
         const data = await res.json();
         if(data && data.errors) setErrors(data.errors);

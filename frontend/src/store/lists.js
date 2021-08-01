@@ -102,9 +102,9 @@ export const updateItemThunk = (payload, id, itemId) => async(dispatch) =>{
     body: JSON.stringify(payload),
   });
   if(response.ok){
-    const createItemData = await response.json();
-    dispatch(createItemAction(createItemData));
-    return createItemData;
+    const updatedItem = await response.json();
+    dispatch(updateItemAction(updatedItem));
+    return updatedItem;
   }
   return response;
 }
