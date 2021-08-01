@@ -6,7 +6,7 @@ import { useHistory } from 'react-router';
 
 
 
-export const EditItemForm = ({listId}, {listItemDetails}) => {
+export const EditItemForm = ({listId, listItemDetails}) => {
   /*@ listItemDetails data ex:
   {
     id:4

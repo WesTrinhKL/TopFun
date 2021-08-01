@@ -46,7 +46,7 @@ export const ViewListPage = () => {
         // console.log("this is a single list item: ", listItem)
         return (<div className="edit-list-item-button" >
         {/* here we pass the single list item data to the edit modal */}
-          <EditItemFormModal key={listItemDetails.id} listId={singleListItems.id} listItemDetails={listItemDetails} />
+          <EditItemFormModal  listId={singleListItems.id} listItemDetails={listItemDetails} />
         </div>)
       }
 
@@ -93,7 +93,7 @@ export const ViewListPage = () => {
           </div>
 
           {singleListItems && singleListItems.listItems.map((listItem)=>(
-            <div className="view-item-wrapper">
+            <div key={listItem.id} className="view-item-wrapper">
               <div className="view-item-body-content">
                 <div>
                   <img className="view-image-cover" src={listItem.imageLink} alt="img" />
