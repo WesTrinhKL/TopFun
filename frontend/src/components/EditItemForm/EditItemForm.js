@@ -48,7 +48,7 @@ export const EditItemForm = ({listId, listItemDetails}) => {
       return dispatch(updateItemThunk(payload,listId,listItemDetails.id)).then((data)=>{
 
         history.push(`/view-list/${listId}`);
-        // window.location.reload();
+        window.location.reload();
       }).catch(async (res) =>{
         const data = await res.json();
         if(data && data.errors) setErrors(data.errors);
