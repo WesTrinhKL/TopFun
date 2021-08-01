@@ -262,6 +262,7 @@ router.post('/listId/:id/add/item', requireAuth, validateListItem, asyncHandler(
   }
 }))
 
+//@UPDATE item in list
 router.post('/listId/:id/update/item/:itemId', requireAuth, validateListItem, asyncHandler(async(req,res)=>{
   //verify list id is accessible by user
   const paramListId = req.params.id;

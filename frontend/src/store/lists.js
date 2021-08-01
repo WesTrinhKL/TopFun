@@ -6,6 +6,7 @@ const CREATE_LIST = "lists/create-list";
 const UPDATE_LIST = "lists/update-list";
 const FETCH_LIST_ITEMS = "lists/listitems";
 const CREATE_ITEM = "lists/create-item";
+const UPDATE_ITEM = "lists/update-item";
 
 export const setHomepageFeed = (homePageFeed) => ({
   type: SET_HOMEPAGE_FEED,
@@ -31,6 +32,13 @@ export const createItemAction = (payload, id) =>({
   type: CREATE_ITEM,
   id,
   payload,
+})
+
+export const updateItemAction = (payload, id, itemId) =>({
+  type: UPDATE_ITEM,
+  id,
+  payload,
+  itemId
 })
 
 
@@ -88,12 +96,26 @@ export const createItemThunk = (payload, id) => async(dispatch) =>{
   return response;
 }
 
+export const updateItemThunk = (payload, id, itemId) => async(dispatch) =>{
+  const response = await csrfFetch(`/api/lists/listId/${id}/update/item/${itemId}`, {
+    method: "post",
+    body: JSON.stringify(payload),
+  });
+  if(response.ok){
+    const createItemData = await response.json();
+    dispatch(createItemAction(createItemData));
+    return createItemData;
+  }
+  return response;
+}
+
 /* ----- REDUCERS ------ */
 const initialState = {
   homepageFeedGlobal:null,
   createdList:null,
   singeListItems:null,
   itemCreated:null,
+  mostRecentUpdatedItem:null,
 };
 const listReducer = (state=initialState, action) =>{
   let newState = {...state};
@@ -117,6 +139,10 @@ const listReducer = (state=initialState, action) =>{
     }
     case CREATE_ITEM:{
       newState.itemCreated = action.payload;
+      return newState;
+    }
+    case UPDATE_ITEM:{
+      newState.mostRecentUpdatedItem = action.payload;
       return newState;
     }
     default:

@@ -1,7 +1,7 @@
 import React,{ useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 // import './CreateItemForm.css';
-import { createItemThunk } from '../../store/lists';
+import { updateItemThunk } from '../../store/lists';
 import { useHistory } from 'react-router';
 
 
@@ -29,12 +29,12 @@ export const EditItemForm = ({listId, listItemDetails}) => {
   const [title, setTitle] = useState(listItemDetails.title || "");
   const [imageLink, setimageLink] = useState(listItemDetails.imageLink || "");
   const [content, setcontent] = useState(listItemDetails.content || "");
-  const [currentRank, setcurrentRank] = useState(listItemDetails.currentRank || "1");
+  const [currentRank, setcurrentRank] = useState(listItemDetails.currentRank || 1);
   const [extraLink, setextraLink] = useState("");
   const [errors, setErrors] = useState([]);
   const [currentOption, setCurrentOption] = useState(1);
 
-  const onFormSubmitCreateList = (e)=>{
+  const onFormSubmitUpdateItem = (e)=>{
     e.preventDefault();
     if(!sessionUser) history.push('/')
     else{
@@ -45,7 +45,7 @@ export const EditItemForm = ({listId, listItemDetails}) => {
         currentRank,
       }
       setErrors([]);
-      return dispatch(createItemThunk(payload,listId)).then((data)=>{
+      return dispatch(updateItemThunk(payload,listId)).then((data)=>{
         // console.log("item creation returned data: ", data);
         history.push(`/view-list/${listId}`);
         window.location.reload();
@@ -62,7 +62,7 @@ export const EditItemForm = ({listId, listItemDetails}) => {
   const setcurrentRankE = (e) => setcurrentRank(e.target.value);
   const setExtraLinkE = (e) => setextraLink(e.target.value);
 
-
+  //@does validation of data before updating state and going to the next field
   const next = ()=>{
     switch (currentOption) {
       case 1:{
@@ -184,10 +184,10 @@ export const EditItemForm = ({listId, listItemDetails}) => {
 
   return (
     <div className="create-form-wrapper-item">
-      <form className="form-container-wrapper" onSubmit={onFormSubmitCreateList}>
+      <form className="form-container-wrapper" onSubmit={onFormSubmitUpdateItem}>
         <div className="form-container-list-item">
 
-          <div className="form-item-spacing-item title-list"> Add Item To Your List</div>
+          <div className="form-item-spacing-item title-list"> Currently Editing: {title}</div>
           <div className="step-text">
             step {currentOption} of 5
           </div>
@@ -220,7 +220,7 @@ export const EditItemForm = ({listId, listItemDetails}) => {
             </div>
             <div className="prev-next-box">
               {currentOption < 5 && <div className="button-style-item" onClick={next}> Next</div>}
-              {currentOption === 5 && <button type="submit" className="button-style-item button-item-submit"> Create</button>}
+              {currentOption === 5 && <button type="submit" className="button-style-item button-item-submit"> Update</button>}
             </div>
 
           </div>
