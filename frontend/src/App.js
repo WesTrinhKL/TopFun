@@ -28,9 +28,11 @@ function App() {
 
     //   </div>
     <>
+      {/* navigation contain the physical routes */}
       <Navigation isLoaded={isLoaded} />
       {isLoaded && (
           <Switch>
+            {/* routes depending on what route is triggered, will render component */}
             <Route exact path='/'>
               <LandingPage />
             </Route>

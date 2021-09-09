@@ -40,27 +40,25 @@ export const LandingPage = () => {
   return (
     <>
       <div id="display-dark-background" />
-      <div className="landing-page-container">
-        <img className="landing-img" src={selectedBackground} alt="" />
-      </div>
-      <div className="landing-text">
-
-        <div className="landing-header">Share what's on your mind!</div>
-        <div className="landing-body">Join our community and share your favorite hobbies, food you love, your top 10 anime betrayals, or just pictures of your dogs!</div>
-
-        <Link className="join-button" to="/signup">Join for free</Link>
-
-      </div>
-      <div className="plug">
-        <div className="plug-content">
-          <i className="plug-icon fab fa-github-alt"></i>
-            <div className="plug-wrapper">
-            <div className="plug-made-by">Made By: </div>
-              <a className="plug-link" target="_blank" rel="noopener noreferrer" href="https://github.com/WesTrinhKL/TopFun">Wes Trinh <i className="fas fa-external-link-alt"></i></a>
-          </div>
+        <div className="landing-page-container">
+          <img className="landing-img" src={selectedBackground} alt="" />
         </div>
 
-      </div>
+        <div className="landing-text">
+          <div className="landing-header">Share what's on your mind!</div>
+          <div className="landing-body">Join our community and share your favorite hobbies, food you love, your top 10 anime betrayals, or just pictures of your dogs!</div>
+          <Link className="join-button" to="/signup">Join for free</Link>
+        </div>
+
+        <div className="plug">
+          <div className="plug-content">
+            <i className="plug-icon fab fa-github-alt"></i>
+              <div className="plug-wrapper">
+              <div className="plug-made-by">Made By: </div>
+                <a className="plug-link" target="_blank" rel="noopener noreferrer" href="https://github.com/WesTrinhKL/TopFun">Wes Trinh <i className="fas fa-external-link-alt"></i></a>
+            </div>
+          </div>
+        </div>
 
     </>
   )
