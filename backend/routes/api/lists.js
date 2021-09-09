@@ -55,6 +55,9 @@ const router = express.Router();
 
 
 // -----------------Lists-------------------
+router.get('/helloworld', (req, res) => {
+  res.send('Hello World!')
+})
 
 //@fetch one single list and its items based on list id
 router.get('/:id/items', asyncHandler(async (req, res)=>{
