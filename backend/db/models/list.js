@@ -34,5 +34,10 @@ module.exports = (sequelize, DataTypes) => {
 
     })
   };
+
+  List.getListItemsWithListId = async (id) => {
+
+  }
+
   return List;
 };

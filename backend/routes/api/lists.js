@@ -80,8 +80,6 @@ router.get('/:id/items', asyncHandler(async (req, res)=>{
       },
     ],
     limit: 20,
-
-
   });
   return res.json(lists);
   // returns an array of users obj, with arrays(lists key) of lists obj.
