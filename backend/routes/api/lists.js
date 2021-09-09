@@ -12,7 +12,8 @@ const { Op } = require("sequelize");
 const { check } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation');
 
-const validateCreateList = [ //will run each middleware below (your req will be screened each time)
+const validateCreateList = [
+  //will run each middleware below (your req will be screened each time)
   check('title')
     .exists({ checkFalsy: true })
     .notEmpty()
@@ -34,7 +35,7 @@ const validateCreateList = [ //will run each middleware below (your req will be 
   handleValidationErrors,
 ];
 
-const validateListItem = [ //will run each middleware below (your req will be screened each time)
+const validateListItem = [
   check('title')
     .exists({ checkFalsy: true })
     .notEmpty()

@@ -1,10 +1,15 @@
 
 const router = require('express').Router();
 
+
+
 router.post('/test', function(req, res) {
   res.json({ requestBody: req.body });
 });
 
+router.get('/helloworld2', (req, res) => {
+  res.send('Hello World2!')
+})
 
 //@send-cookie-test
 //@GET /api/set-token-cookie

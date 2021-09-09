@@ -45,20 +45,15 @@ app.use(// Set the _csrf token and create req.csrfToken method
 );
 
 
-
-
-
-
 //@error handlers
 app.use((_req, _res, next) => {// Catch unhandled requests (resource not found 404)
-  //^if 'err' isn't passed then this error handler will be called rather than the ones below
-  //^one of the final calls towards the end
   const err = new Error("The requested resource couldn't be found.");
   err.title = "Resource Not Found";
   err.errors = ["The requested resource couldn't be found."];
   err.status = 404;
   next(err);
 });
+
 app.use((err, _req, _res, next) => {// Process sequelize errors
   // check if error is a Sequelize error:
   if (err instanceof ValidationError) {
@@ -67,7 +62,8 @@ app.use((err, _req, _res, next) => {// Process sequelize errors
   }
   next(err);
 })
-app.use((err, _req, res, _next) => { // Error formatter before response
+
+app.use((err, _req, res, _next) => { // Error formatter before response - take all errors and format it
   res.status(err.status || 500);
   console.error(err);
   res.json({
