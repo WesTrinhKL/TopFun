@@ -12,28 +12,27 @@ export const ListCarousel = (props) => {
   }
 
   const scrollEl = useRef(0);
-  const [incrementVal, setIncrementVal ] = useState(650);
+  const [incrementVal, setIncrementVal ] = useState(0);
   const [scrollPos, setScrollPos] = useState(0);
-  const [scrollMax, setScrollMax] = useState(props.listItemsArray.length * 200 - 742 - 5) //length of the whole list minus the container and margin will then yield the remaining list max width that is currently 'invisible'
+  const [scrollMax, setScrollMax] = useState(props.listItemsArray.length * 200 - 742 - 14) //length of the whole list minus the container and margin will then yield the remaining list max width that is currently 'invisible'
   const [carouselContentWidth, setCarouselContentWidth] = useState(0)
 
   useEffect(() => {
     // scrollEl.current.scrollLeft = 0;
     // useRef selects the element we want from DOM, and set the increment value
     setCarouselContentWidth(scrollEl.current.offsetWidth);
-    setIncrementVal(scrollEl.current.offsetWidth - 100);
+    setIncrementVal(scrollEl.current.offsetWidth);
     console.log("current width of container" , scrollEl)
 
     const handleResize = ()=> {
-
       // on resize, update carousel width state to match
-      setCarouselContentWidth(scrollEl.current.offsetWidth);
-      console.log('resized to: ', window.innerWidth, 'x', window.innerHeight)
-
+      if(scrollEl.current?.offsetWidth) {
+        setCarouselContentWidth(scrollEl.current.offsetWidth);
+        console.log('resized to: ', window.innerWidth, 'x', window.innerHeight)
+      }
     }
 
     window.addEventListener('resize', handleResize)
-
   }, [])
 
   const scrollLogicHandler = (direction)=>{
@@ -41,12 +40,13 @@ export const ListCarousel = (props) => {
     let position= scrollPos;
 
     if (direction === "left") increment *= -1;
-    position += increment;
+    position += increment + 30;
 
     scrollEl.current.scrollLeft = position;
     setScrollPos(Math.max(0, Math.min(position, scrollMax)));
     // console.log("increment", increment)
-    // console.log("position", position)
+    console.log("position", position)
+    console.log("scrollmax", scrollMax)
   }
 
   let leftClass = (scrollPos > 0) ? "discover-button-container" : "discover-button-container hide-scroll";
@@ -64,13 +64,13 @@ export const ListCarousel = (props) => {
 
             <div className="carousel-list__scroll-container">
               {/* duvdd */}
-              <div className={leftClass} onClick={() => scrollLogicHandler("left")}>
+              {leftClass && <div className={leftClass} onClick={() => scrollLogicHandler("left")}>
                 <button className="button-carousel" onClick={() => scrollLogicHandler("left")}><i class="fas fa-angle-left"></i></button>
-              </div>
+              </div>}
 
-              <div className={rightClass} onClick={() => scrollLogicHandler("right")}>
+              {rightClass && <div className={rightClass} onClick={() => scrollLogicHandler("right")}>
                 <button className="button-carousel" onClick={() => scrollLogicHandler("right")}><i class="fas fa-angle-right"></i></button>
-              </div>
+              </div>}
             </div>
 
             {/* carousel items */}
@@ -81,9 +81,9 @@ export const ListCarousel = (props) => {
 
 
 
-          <div className="list-view-button">
+          {/* <div className="list-view-button">
             <Link to={`/view-list/${props.id}`}  className="button-style-list"href="">view full list</Link>
-          </div>
+          </div> */}
         </div>
 
 
