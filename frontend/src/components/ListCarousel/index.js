@@ -11,31 +11,46 @@ export const ListCarousel = (props) => {
     history.push(`/view-list/${props.id}`)
   }
 
-  const scrollEl = useRef();
+  const scrollEl = useRef(0);
   const [incrementVal, setIncrementVal ] = useState(650);
   const [scrollPos, setScrollPos] = useState(0);
   const [scrollMax, setScrollMax] = useState(props.listItemsArray.length * 200 - 742 - 5) //length of the whole list minus the container and margin will then yield the remaining list max width that is currently 'invisible'
+  const [carouselContentWidth, setCarouselContentWidth] = useState(0)
 
   useEffect(() => {
-    scrollEl.current.scrollLeft = 0;
+    // scrollEl.current.scrollLeft = 0;
+    // useRef selects the element we want from DOM, and set the increment value
+    setCarouselContentWidth(scrollEl.current.offsetWidth);
+    setIncrementVal(scrollEl.current.offsetWidth - 100);
+    console.log("current width of container" , scrollEl)
+
+    const handleResize = ()=> {
+
+      // on resize, update carousel width state to match
+      setCarouselContentWidth(scrollEl.current.offsetWidth);
+      console.log('resized to: ', window.innerWidth, 'x', window.innerHeight)
+
+    }
+
+    window.addEventListener('resize', handleResize)
+
   }, [])
 
   const scrollLogicHandler = (direction)=>{
-    let inc = incrementVal;
-    let pos = scrollPos;
+    let increment = incrementVal;
+    let position= scrollPos;
 
-    // Reduce increment if pos at a container edge
-    if (pos === 0 || pos === scrollMax) inc -= 34;
+    if (direction === "left") increment *= -1;
+    position += increment;
 
-    if (direction === "left") inc *= -1;
-    pos += inc;
-
-    scrollEl.current.scrollLeft = pos;
-    setScrollPos(Math.max(0, Math.min(pos, scrollMax)));
+    scrollEl.current.scrollLeft = position;
+    setScrollPos(Math.max(0, Math.min(position, scrollMax)));
+    // console.log("increment", increment)
+    // console.log("position", position)
   }
 
-  let leftClass = (scrollPos !== 0) ? "discover-button-container" : "discover-button-container";
-  let rightClass = (scrollPos !== scrollMax) ? "discover-button-container" : "discover-button-container ";
+  let leftClass = (scrollPos > 0) ? "discover-button-container" : "discover-button-container hide-scroll";
+  let rightClass = (scrollPos < scrollMax && props.listItemsArray.length * 200 > carouselContentWidth) ? "discover-button-container" : "discover-button-container hide-scroll";
 
 
   return (

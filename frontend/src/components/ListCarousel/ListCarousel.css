@@ -29,14 +29,15 @@
   max-width: 95%;
   overflow-x: hidden;
   scroll-behavior: smooth;
+  /* position: relative; */
 }
 .carousel-list__scroll-container{
   display: flex;
   justify-content: space-between;
   align-items: center;
   position: absolute;
-  width: 780px;
-  height: 165px;
+  min-width: 55vw;
+  height: 175px;
   margin-left: -14px;
   z-index: 3;
   pointer-events: none;
