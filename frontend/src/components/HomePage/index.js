@@ -23,8 +23,9 @@ export const HomePage = () => {
       <div className="grid-item-lists" >
           {/* for each item, display list content component here */}
         <div className="feed-menu-dropdown">
-          <div>All Feed</div>
-          <i className="fas fa-caret-down d-icon"></i>
+          <div>Explore</div>
+          {/* <div>All Feed</div>
+          <i className="fas fa-caret-down d-icon"></i> */}
         </div>
         <div className="all-lists-container">
           {homepageData?.map(list=>(

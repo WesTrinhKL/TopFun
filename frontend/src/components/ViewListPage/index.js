@@ -87,10 +87,10 @@ export const ViewListPage = () => {
         {singleListItems && iAmTheUserButtonAddItem}
 
         <div className="view-list-content-wrapper">
-          <div className="view-menu-dropdown">
+          {/* <div className="view-menu-dropdown">
             <div>Sort By</div>
             <i className="fas fa-caret-down d-icon"></i>
-          </div>
+          </div> */}
 
           {singleListItems && singleListItems.listItems.map((listItem)=>(
             <div key={listItem.id} className="view-item-wrapper">
