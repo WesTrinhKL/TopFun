@@ -97,10 +97,9 @@ export const ViewListPage = () => {
               <div className="view-item-body-content">
                 <div>
                   <img className="view-image-cover" src={listItem.imageLink} alt="img" />
-                  <div className="view-external-link">
-                  <a href="twitter.com" className="view-external-link-button"> View Link Here <i className="view-external-link-icon fas fa-external-link-alt"></i></a>
-
-                  </div>
+                  {/* <div className="view-external-link">
+                    <a href="twitter.com" className="view-external-link-button"> View Link Here <i className="view-external-link-icon fas fa-external-link-alt"></i></a>
+                  </div> */}
                 </div>
 
                 <div className="view-title-and-content-wrapper">
