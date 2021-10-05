@@ -1,6 +1,6 @@
 # TopFun
 
-TopFun is a list based application where you can curate a list of your top foods, games, movies, resources, etc. and share it with others! Made with React, Express, pure vanilla CSS, Sequelize, PostgreSQL.
+TopFun is a list based application where you can curate a list of your top foods, games, movies, resources, etc. and share it with others! Made with React, Express, vanilla CSS (no 3rd party components), Sequelize, PostgreSQL.
 
 ## Technologies
 * <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript"><img src="https://img.shields.io/badge/-JavaScript-F7DF1E?logo=JavaScript&logoColor=333333" /></a>
