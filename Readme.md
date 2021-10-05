@@ -12,6 +12,19 @@ TopFun is a list based application where you can curate a list of your top foods
 * <a href="https://redux.js.org/"><img src="https://img.shields.io/badge/redux-%23593d88.svg?style=flat&logo=redux&logoColor=white"></a>
 * <a href="https://developer.mozilla.org/en-US/docs/Web/CSS"><img src="https://img.shields.io/badge/-CSS3-1572B6?logo=CSS3" /></a>
 
+## Features
+
+### Landing Page
+![landing](./readme-assets/images/topfun1.png)
+
+### List Item View
+![list-view](./readme-assets/images/topfun2.png)
+
+### CRUD List and List Items
+![list-items](./readme-assets/images/topfun3.png)
+
+
+
 
 ## Getting started
 1. Clone this repository
