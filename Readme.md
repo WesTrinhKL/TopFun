@@ -17,6 +17,12 @@ TopFun is a list based application where you can curate a list of your top foods
 ### Landing Page
 ![landing](./readme-assets/images/topfun1.png)
 
+### Registration / Demo
+![landing](./readme-assets/images/demoLogin.png)
+
+### Feed Page
+![list-view](./readme-assets/images/carousel.png)
+
 ### List Item View
 ![list-view](./readme-assets/images/topfun2.png)
 
