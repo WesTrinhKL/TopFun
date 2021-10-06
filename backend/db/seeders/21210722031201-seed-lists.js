@@ -27,7 +27,7 @@ module.exports = {
         updatedAt: new Date(),
       },
       {
-        title: "My Top 5 Active NBA Players",
+        title: "My Top 10 Active NBA Players",
         coverPhotoLink: "https://topfunphotos.s3.us-west-1.amazonaws.com/topfunimages/nbaplayers/ANTETOKOUNMPO_G_USATSI_14878894.jpg",
         description: "This is the TRUTH, this is straight factz, no cap",
         categoryId: 3,
