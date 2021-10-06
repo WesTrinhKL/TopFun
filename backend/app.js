@@ -22,6 +22,17 @@ app.get('/helloworld', (req, res) => {
   res.send('Hello World!')
 })
 
+app.use(// Set the _csrf token and create req.csrfToken method
+  csurf({
+    cookie: {
+      secure: isProduction,
+      sameSite: isProduction && "Lax",
+      httpOnly: true,
+    },
+  })
+);
+
+
 if (!isProduction) {// Security Middleware
   // enable cors only in development
   app.use(cors());
@@ -34,15 +45,6 @@ app.use(helmet({ // helmet helps set a variety of headers to better secure your 
 app.use(routes); // Connect all the routes
 
 
-app.use(// Set the _csrf token and create req.csrfToken method
-  csurf({
-    cookie: {
-      secure: isProduction,
-      sameSite: isProduction && "Lax",
-      httpOnly: true,
-    },
-  })
-);
 
 
 //@error handlers
