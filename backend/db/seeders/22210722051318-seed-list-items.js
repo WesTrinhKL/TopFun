@@ -87,7 +87,7 @@ module.exports = {
       // NBA players
       {
         title: "Lebron James",
-        currentRank: 1,
+        currentRank: 2,
         imageLink: "https://topfunphotos.s3.us-west-1.amazonaws.com/topfunimages/nbaplayers/LeBron-James-Lakers-Gold-696x476.jpg",
         content: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
         listId: 3,
@@ -97,7 +97,7 @@ module.exports = {
       },
       {
         title: "Giannis Antetokounmpo",
-        currentRank: 2,
+        currentRank: 3,
         imageLink: "https://topfunphotos.s3.us-west-1.amazonaws.com/topfunimages/nbaplayers/ANTETOKOUNMPO_G_USATSI_14878894.jpg",
         content: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
         listId: 3,
@@ -107,7 +107,7 @@ module.exports = {
       },
       {
         title: "Stephen Curry",
-        currentRank: 3,
+        currentRank: 6,
         imageLink: "https://topfunphotos.s3.us-west-1.amazonaws.com/topfunimages/nbaplayers/curry_s_USATSI_1537941.jpg",
         content: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
         listId: 3,
@@ -117,7 +117,7 @@ module.exports = {
       },
       {
         title: "Kevin Durant",
-        currentRank: 4,
+        currentRank: 1,
         imageLink: "https://topfunphotos.s3.us-west-1.amazonaws.com/topfunimages/nbaplayers/Durant_Kevin_USATSI_15393372.jpg",
         content: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
         listId: 3,
@@ -127,7 +127,7 @@ module.exports = {
       },
       {
         title: "Kawhi Leonard",
-        currentRank: 5,
+        currentRank: 4,
         imageLink: "https://topfunphotos.s3.us-west-1.amazonaws.com/topfunimages/nbaplayers/LEONARD_K_USATSI_15303268.jpg",
         content: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
         listId: 3,
@@ -137,7 +137,7 @@ module.exports = {
       },
       {
         title: "Anthony Davis",
-        currentRank: 6,
+        currentRank: 5,
         imageLink: "https://topfunphotos.s3.us-west-1.amazonaws.com/topfunimages/nbaplayers/Davis_Anthony_USATSI_15031574_1.jpg",
         content: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
         listId: 3,
